@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,25 +46,25 @@
 		2D5541E8656DFAFB82F9BB85A6DEFD8B /* Pods-ODRIBATests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ODRIBATests-frameworks.sh"; sourceTree = "<group>"; };
 		2E2FC56A11DB1C064BAE24DEF4F12561 /* Pods-ODRIBATests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ODRIBATests.release.xcconfig"; sourceTree = "<group>"; };
 		30480063C1EDBF7623D391E338DEAB98 /* Pods-ODRIBATests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ODRIBATests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3115A59F9E4CCB2E12C81CEA898CBCD9 /* Pods-ODRIBAUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ODRIBAUITests.modulemap"; sourceTree = "<group>"; };
+		3115A59F9E4CCB2E12C81CEA898CBCD9 /* Pods-ODRIBAUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ODRIBAUITests.modulemap"; sourceTree = "<group>"; };
 		383D413BE94B7B3F443E2F5CDA7E9DF7 /* Pods-ODRIBA-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ODRIBA-umbrella.h"; sourceTree = "<group>"; };
 		453511B393DA209B24A4E6965FD7A4D9 /* SwiftRangeSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftRangeSlider-dummy.m"; sourceTree = "<group>"; };
-		4C16336FFFA272810550402753870A0A /* Pods-ODRIBA.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ODRIBA.modulemap"; sourceTree = "<group>"; };
+		4C16336FFFA272810550402753870A0A /* Pods-ODRIBA.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ODRIBA.modulemap"; sourceTree = "<group>"; };
 		4E20634D441B08C16A4E282D8719A415 /* Pods-ODRIBATests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ODRIBATests-dummy.m"; sourceTree = "<group>"; };
-		5F710A0D25EBEF886CFCE9805AEFF346 /* SwiftRangeSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftRangeSlider.framework; path = SwiftRangeSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F710A0D25EBEF886CFCE9805AEFF346 /* SwiftRangeSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftRangeSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B19DDB78BF9893B326EF3EDB3B0EC4B /* Pods-ODRIBA-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ODRIBA-acknowledgements.markdown"; sourceTree = "<group>"; };
 		72F4B648809063EB9B5A5DEEE7639544 /* Pods-ODRIBA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ODRIBA.release.xcconfig"; sourceTree = "<group>"; };
 		736A6D0F9BAE8B31213690D9D5BC735C /* Pods-ODRIBA-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ODRIBA-frameworks.sh"; sourceTree = "<group>"; };
-		74A4F4A9BDCC2F0D670ED9DA0E35B408 /* Pods_ODRIBAUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ODRIBAUITests.framework; path = "Pods-ODRIBAUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74A4F4A9BDCC2F0D670ED9DA0E35B408 /* Pods_ODRIBAUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODRIBAUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		828DE5E74FB1859FC15EFB4DC432083E /* Pods-ODRIBAUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ODRIBAUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		83198FE73B8C6A7AC3C7D9541A53F8BC /* Pods-ODRIBATests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-ODRIBATests.modulemap"; sourceTree = "<group>"; };
+		83198FE73B8C6A7AC3C7D9541A53F8BC /* Pods-ODRIBATests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ODRIBATests.modulemap"; sourceTree = "<group>"; };
 		8E1BECC3E2EC5C3993AEF2E22256166A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		918D78AD62113DB5A86E16BB9584D522 /* SwiftRangeSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftRangeSlider-umbrella.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9676517B4EB30943ACA39D60F3C5423E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98B5939247B8439BFC273DFC0F20DE06 /* Pods-ODRIBAUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ODRIBAUITests-dummy.m"; sourceTree = "<group>"; };
 		A0A949DB4C8B4126E5F26F45B49DFC6F /* Pods-ODRIBA-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ODRIBA-resources.sh"; sourceTree = "<group>"; };
-		A5E9371D9E835DE109993A5719DA0BF8 /* Pods_ODRIBA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ODRIBA.framework; path = "Pods-ODRIBA.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5E9371D9E835DE109993A5719DA0BF8 /* Pods_ODRIBA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODRIBA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		BB660DA4CF2C6BF07C2E6CE869809E62 /* Pods-ODRIBA-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ODRIBA-dummy.m"; sourceTree = "<group>"; };
 		C9702B85B8C59C61F507F14860F6E1BD /* RangeSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RangeSlider.swift; path = SwiftRangeSlider/RangeSlider.swift; sourceTree = "<group>"; };
@@ -78,9 +78,9 @@
 		E2A5D15E646D2A605C5FF4567AAE6BDF /* Pods-ODRIBATests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ODRIBATests.debug.xcconfig"; sourceTree = "<group>"; };
 		E68C2EF9BC0665764BFA48EB194CF31A /* Pods-ODRIBA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ODRIBA.debug.xcconfig"; sourceTree = "<group>"; };
 		EF9AD462C450171B2D43103D9220AF07 /* RangeSliderTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RangeSliderTrack.swift; path = SwiftRangeSlider/RangeSliderTrack.swift; sourceTree = "<group>"; };
-		F00C273100BBC726C29C644BA089609A /* Pods_ODRIBATests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ODRIBATests.framework; path = "Pods-ODRIBATests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F00C273100BBC726C29C644BA089609A /* Pods_ODRIBATests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODRIBATests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C988A15272F2A3150A7292795E17A5 /* Pods-ODRIBA-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ODRIBA-acknowledgements.plist"; sourceTree = "<group>"; };
-		FE04775022115C44ABCE892A956E3B3C /* SwiftRangeSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftRangeSlider.modulemap; sourceTree = "<group>"; };
+		FE04775022115C44ABCE892A956E3B3C /* SwiftRangeSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftRangeSlider.modulemap; sourceTree = "<group>"; };
 		FEBB7303C0AD55691FFACFB289E911E7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,7 +183,6 @@
 				EF9AD462C450171B2D43103D9220AF07 /* RangeSliderTrack.swift */,
 				F6073EF7567ED7377917F706818FAA89 /* Support Files */,
 			);
-			name = SwiftRangeSlider;
 			path = SwiftRangeSlider;
 			sourceTree = "<group>";
 		};
@@ -372,7 +371,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0900;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -598,7 +597,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -606,15 +607,21 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
@@ -718,7 +725,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -726,14 +735,20 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
@@ -747,6 +762,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
