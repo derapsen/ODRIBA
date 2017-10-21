@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13210CD11E359C8502F683E5 /* Pods_ODRIBAUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4B43D6FF262636AAA5EFE2 /* Pods_ODRIBAUITests.framework */; };
+		1FB543E1B158BBF011051A49 /* Pods_ODRIBATests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA127C6F2613362EA1B5F5E6 /* Pods_ODRIBATests.framework */; };
 		A27990DF1F9AE41500A60788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990DE1F9AE41500A60788 /* AppDelegate.swift */; };
 		A27990E11F9AE41500A60788 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990E01F9AE41500A60788 /* ViewController.swift */; };
 		A27990E41F9AE41500A60788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A27990E21F9AE41500A60788 /* Main.storyboard */; };
@@ -14,6 +16,7 @@
 		A27990E91F9AE41500A60788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A27990E71F9AE41500A60788 /* LaunchScreen.storyboard */; };
 		A27990F41F9AE41600A60788 /* ODRIBATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990F31F9AE41600A60788 /* ODRIBATests.swift */; };
 		A27990FF1F9AE41600A60788 /* ODRIBAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990FE1F9AE41600A60788 /* ODRIBAUITests.swift */; };
+		A6789C17F5D773087AB326E8 /* Pods_ODRIBA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D52F1B8D54CABD317901D35 /* Pods_ODRIBA.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B4B43D6FF262636AAA5EFE2 /* Pods_ODRIBAUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODRIBAUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D52F1B8D54CABD317901D35 /* Pods_ODRIBA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODRIBA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		335C27C22A8D20900FFC3C92 /* Pods-ODRIBAUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBAUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBAUITests/Pods-ODRIBAUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7CFAA26B44D5E9A83DCA1D79 /* Pods-ODRIBATests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBATests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBATests/Pods-ODRIBATests.debug.xcconfig"; sourceTree = "<group>"; };
+		9A4BBE1510B4CA5B2026D208 /* Pods-ODRIBA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBA.release.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBA/Pods-ODRIBA.release.xcconfig"; sourceTree = "<group>"; };
 		A27990DB1F9AE41500A60788 /* ODRIBA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ODRIBA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27990DE1F9AE41500A60788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A27990E01F9AE41500A60788 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +55,10 @@
 		A27990FA1F9AE41600A60788 /* ODRIBAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ODRIBAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27990FE1F9AE41600A60788 /* ODRIBAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODRIBAUITests.swift; sourceTree = "<group>"; };
 		A27991001F9AE41600A60788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA127C6F2613362EA1B5F5E6 /* Pods_ODRIBATests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODRIBATests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF6C837B16E458B602C78F98 /* Pods-ODRIBATests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBATests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBATests/Pods-ODRIBATests.release.xcconfig"; sourceTree = "<group>"; };
+		E394F753D993EF09BD51FC5D /* Pods-ODRIBA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBA/Pods-ODRIBA.debug.xcconfig"; sourceTree = "<group>"; };
+		EA6EA7F45C0553B1A469A566 /* Pods-ODRIBAUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBAUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBAUITests/Pods-ODRIBAUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6789C17F5D773087AB326E8 /* Pods_ODRIBA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB543E1B158BBF011051A49 /* Pods_ODRIBATests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13210CD11E359C8502F683E5 /* Pods_ODRIBAUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99B980C38E7E9E77706761B7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E394F753D993EF09BD51FC5D /* Pods-ODRIBA.debug.xcconfig */,
+				9A4BBE1510B4CA5B2026D208 /* Pods-ODRIBA.release.xcconfig */,
+				7CFAA26B44D5E9A83DCA1D79 /* Pods-ODRIBATests.debug.xcconfig */,
+				CF6C837B16E458B602C78F98 /* Pods-ODRIBATests.release.xcconfig */,
+				335C27C22A8D20900FFC3C92 /* Pods-ODRIBAUITests.debug.xcconfig */,
+				EA6EA7F45C0553B1A469A566 /* Pods-ODRIBAUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A27990D21F9AE41500A60788 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +109,8 @@
 				A27990F21F9AE41600A60788 /* ODRIBATests */,
 				A27990FD1F9AE41600A60788 /* ODRIBAUITests */,
 				A27990DC1F9AE41500A60788 /* Products */,
+				99B980C38E7E9E77706761B7 /* Pods */,
+				B25B2E15CF1815EFD9756981 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +155,16 @@
 			path = ODRIBAUITests;
 			sourceTree = "<group>";
 		};
+		B25B2E15CF1815EFD9756981 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D52F1B8D54CABD317901D35 /* Pods_ODRIBA.framework */,
+				AA127C6F2613362EA1B5F5E6 /* Pods_ODRIBATests.framework */,
+				2B4B43D6FF262636AAA5EFE2 /* Pods_ODRIBAUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A27991031F9AE41600A60788 /* Build configuration list for PBXNativeTarget "ODRIBA" */;
 			buildPhases = (
+				B6D42578FDA49A1A3C8C2172 /* [CP] Check Pods Manifest.lock */,
 				A27990D71F9AE41500A60788 /* Sources */,
 				A27990D81F9AE41500A60788 /* Frameworks */,
 				A27990D91F9AE41500A60788 /* Resources */,
+				B3516CAE7F6C52D6CB12442A /* [CP] Embed Pods Frameworks */,
+				0738152EDC5FA2F8ACBD30AB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A27991061F9AE41600A60788 /* Build configuration list for PBXNativeTarget "ODRIBATests" */;
 			buildPhases = (
+				225D57C07F5B2D6869BEB211 /* [CP] Check Pods Manifest.lock */,
 				A27990EB1F9AE41600A60788 /* Sources */,
 				A27990EC1F9AE41600A60788 /* Frameworks */,
 				A27990ED1F9AE41600A60788 /* Resources */,
+				E3B1AB947409302AABDE790F /* [CP] Embed Pods Frameworks */,
+				29C3A85AD4659ADA79B62BCB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A27991091F9AE41600A60788 /* Build configuration list for PBXNativeTarget "ODRIBAUITests" */;
 			buildPhases = (
+				94FBAC0A5754D50EBAFCBECC /* [CP] Check Pods Manifest.lock */,
 				A27990F61F9AE41600A60788 /* Sources */,
 				A27990F71F9AE41600A60788 /* Frameworks */,
 				A27990F81F9AE41600A60788 /* Resources */,
+				35BEBE9ECCA4CE8B49EF3480 /* [CP] Embed Pods Frameworks */,
+				1481E365CE5C1E564E91626E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +302,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0738152EDC5FA2F8ACBD30AB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ODRIBA/Pods-ODRIBA-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1481E365CE5C1E564E91626E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ODRIBAUITests/Pods-ODRIBAUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		225D57C07F5B2D6869BEB211 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		29C3A85AD4659ADA79B62BCB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ODRIBATests/Pods-ODRIBATests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		35BEBE9ECCA4CE8B49EF3480 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ODRIBAUITests/Pods-ODRIBAUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94FBAC0A5754D50EBAFCBECC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B3516CAE7F6C52D6CB12442A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ODRIBA/Pods-ODRIBA-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6D42578FDA49A1A3C8C2172 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E3B1AB947409302AABDE790F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ODRIBATests/Pods-ODRIBATests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A27990D71F9AE41500A60788 /* Sources */ = {
@@ -363,7 +550,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -414,7 +601,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -424,10 +611,12 @@
 		};
 		A27991041F9AE41600A60788 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E394F753D993EF09BD51FC5D /* Pods-ODRIBA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ODRIBA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NichibiAppCircle.ODRIBA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -438,10 +627,12 @@
 		};
 		A27991051F9AE41600A60788 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A4BBE1510B4CA5B2026D208 /* Pods-ODRIBA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ODRIBA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NichibiAppCircle.ODRIBA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -452,6 +643,7 @@
 		};
 		A27991071F9AE41600A60788 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CFAA26B44D5E9A83DCA1D79 /* Pods-ODRIBATests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -468,6 +660,7 @@
 		};
 		A27991081F9AE41600A60788 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF6C837B16E458B602C78F98 /* Pods-ODRIBATests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -484,6 +677,7 @@
 		};
 		A279910A1F9AE41600A60788 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 335C27C22A8D20900FFC3C92 /* Pods-ODRIBAUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -499,6 +693,7 @@
 		};
 		A279910B1F9AE41600A60788 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA6EA7F45C0553B1A469A566 /* Pods-ODRIBAUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

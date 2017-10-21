@@ -1,0 +1,21 @@
+PODS:
+  - SwiftRangeSlider (1.1.0)
+
+DEPENDENCIES:
+  - SwiftRangeSlider (from `https://github.com/BrianCorbin/SwiftRangeSlider.git`)
+
+EXTERNAL SOURCES:
+  SwiftRangeSlider:
+    :git: https://github.com/BrianCorbin/SwiftRangeSlider.git
+
+CHECKOUT OPTIONS:
+  SwiftRangeSlider:
+    :commit: 77123ae515b5e8e66b72bc6c9ff013a586a59c56
+    :git: https://github.com/BrianCorbin/SwiftRangeSlider.git
+
+SPEC CHECKSUMS:
+  SwiftRangeSlider: ceae77620845ee87c6c137276f34f396dd0178c5
+
+PODFILE CHECKSUM: ca78dd7285ba41c861067540de239e79c430334c
+
+COCOAPODS: 1.2.1

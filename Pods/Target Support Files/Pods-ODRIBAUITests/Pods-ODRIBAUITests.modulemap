@@ -1,0 +1,6 @@
+framework module Pods_ODRIBAUITests {
+  umbrella header "Pods-ODRIBAUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
