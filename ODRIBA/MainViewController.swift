@@ -75,11 +75,11 @@ class MainViewController: UIViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        // EditViewControllerのインスタンス
-        let editVC = segue.destination as! EditViewController
-        
         if (segue.identifier == "goEdit")
         {
+            // EditViewControllerのインスタンス
+            let editVC = segue.destination as! EditViewController
+            
             if (sender as? String == "UP")
             {
                 editVC.navTitle = "編集画面：UP"
@@ -90,6 +90,12 @@ class MainViewController: UIViewController
                 editVC.navTitle = "編集画面：DOWN"
                 editVC.colorBackground = self.UIColorFromRGB(rgbValue: 0x00B8FA)
             }
+        }
+        else if (segue.identifier == "goCredit")
+        {
+            // CreditViewControllerのインスタンス
+            let creditVC = segue.destination as! CreditViewController
+            creditVC.navTitle = "クレジット"
         }
         else
         {
@@ -112,6 +118,25 @@ class MainViewController: UIViewController
         )
     }
     
-
+    /*
+     *
+     *  昇降ボタン処理
+     *
+     */
+    @IBAction func btnUPDOWNTapAction(_ sender: UIBarButtonItem)
+    {
+        
+    }
+    
+    /*
+     *
+     *  インフォボタン処理
+     *
+     */
+    @IBAction func btnInfoTapAction(_ sender: Any)
+    {
+        performSegue(withIdentifier: "goCredit", sender: nil)
+    }
+    
 }
 

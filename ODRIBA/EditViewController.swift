@@ -8,11 +8,13 @@
 
 import UIKit
 import MediaPlayer
+import SwiftRangeSlider
 
 class EditViewController: UIViewController, MPMediaPickerControllerDelegate
 {
+    // 楽曲管理シングルトン
+    var audioManager = AudioManager.sharedManager
 
-    @IBOutlet weak var navItems: UINavigationItem!
     @IBOutlet weak var viewEdit: UIView!
     @IBOutlet weak var musicToolBar: UIToolbar!
     
@@ -22,6 +24,16 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     
     // 保存ボタン設定
     let btnSave = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(EditViewController.saveTapAction(sender:)))
+    
+    // 楽曲情報イメージ・ラベル
+    @IBOutlet weak var imgArtwork: UIImageView!
+    @IBOutlet weak var lblSong: UILabel!
+    @IBOutlet weak var lblAlbum: UILabel!
+    @IBOutlet weak var lblArtist: UILabel!
+    
+    // 再生範囲・再生位置スライダー
+    @IBOutlet weak var sliderRange: RangeSlider!
+    @IBOutlet weak var sliderPosition: UISlider!
     
     // 音楽編集UIToolBarの各ボタン設定
     let btnSelect = UIBarButtonItem(title: "Select", style: UIBarButtonItemStyle.done, target: self, action: #selector(EditViewController.musicSelectTapAction(sender:)))
@@ -47,6 +59,20 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         
         // 画面背景の設定
         self.viewEdit.backgroundColor = self.colorBackground
+        
+        // 過去の楽曲情報があるなら
+//        if (self.audioManager.mediaItem != nil)
+//        {
+//            self.Setting()
+//        }
+        
+//        var timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.changePosition), userInfo: nil, repeats: true)
+        
+        self.btnPause.isEnabled = false
+        self.btnPlay.isEnabled = true
+//        self.rangeSlider.alpha = 1
+//        self.rangeSlider.isEnabled = true
+//        self.scrubSlider.isEnabled = true
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -54,12 +80,55 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         super.viewWillDisappear(animated)
         
 //        self.audioManager.player.pause()
+        self.barStatusPause()
 //        self.audioManager.player.currentPlaybackTime = self.audioManager.startTime!
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    /*
+     *
+     *  曲情報から各部品の設定を行う
+     *
+     */
+    func changePosition()
+    {
+//        self.scrubSlider.value = Float(self.audioManager.player.currentPlaybackTime)
+//        if (self.scrubSlider.value >= Float(self.rangeSlider.upperValue))
+//        {
+//            self.barStatusPause()
+//        }
+    }
+    
+    /*
+     *
+     *  曲情報から各部品の設定を行う
+     *
+     */
+    func Setting()
+    {
+//        updateSongInformationUI(mediaItem: self.audioManager.mediaItem!)
+//        // 再生範囲スライダーの最小値・最大値
+//        self.rangeSlider.minimumValue = 0
+//        self.rangeSlider.maximumValue = (self.audioManager.mediaItem?.playbackDuration)!
+//        // 再生範囲スライダーの下限値・上限値
+//        self.rangeSlider.lowerValue = 0
+//        self.rangeSlider.upperValue = (self.audioManager.mediaItem?.playbackDuration)!
+//
+//        self.audioManager.ChangeStartTime(start: self.rangeSlider.lowerValue)
+//        self.audioManager.ChangeEndTime(end: self.rangeSlider.upperValue)
+//
+//        // 再生位置スライダーの最小値・最大値
+//        self.scrubSlider.minimumValue = 0
+//        self.scrubSlider.maximumValue = Float((self.audioManager.mediaItem?.playbackDuration)!)
+//        // 再生位置スライダーのつまみの初期位置
+//        self.scrubSlider.value = 0
+//
+//        // 音楽の再生位置を再生範囲スライダーの下限値にする
+//        self.audioManager.player.currentPlaybackTime = self.rangeSlider.lowerValue
     }
     
     
@@ -176,16 +245,21 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
                 print("tap play")
             case 2:
                 // 一時停止ボタンが押された時
-//                self.audioManager.player.pause()
-                self.btnPause.isEnabled = false
-                self.btnPlay.isEnabled = true
-//                self.rangeSlider.alpha = 1
-//                self.rangeSlider.isEnabled = true
-//                self.scrubSlider.isEnabled = true
+                self.barStatusPause()
                 print("tap pause")
             default:
                 print("music select error")
         }
+    }
+    
+    func barStatusPause()
+    {
+//        self.audioManager.player.pause()
+        self.btnPause.isEnabled = false
+        self.btnPlay.isEnabled = true
+//        self.rangeSlider.alpha = 1
+//        self.rangeSlider.isEnabled = true
+//        self.scrubSlider.isEnabled = true
     }
 
     /*
@@ -196,6 +270,44 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     @objc func saveTapAction(sender: UIBarButtonItem)
     {
         
+    }
+    
+    /*
+     *
+     *  再生範囲スライダーの値変更時処理（下限値・上限値の設定）
+     *
+     */
+    @IBAction func changeRangeValue(_ sender: RangeSlider)
+    {
+//        if (sender.lowerValue >= Double(self.scrubSlider.value))
+//        {
+//            sender.lowerValue = Double(self.scrubSlider.value)
+//            self.audioManager.ChangeStartTime(start: sender.lowerValue)
+//        }
+//        if (sender.upperValue < Double(self.scrubSlider.value))
+//        {
+//            sender.upperValue = Double(self.scrubSlider.value)
+//            self.audioManager.ChangeEndTime(end: sender.upperValue)
+//        }
+//        self.audioManager.player.currentPlaybackTime = Double(self.scrubSlider.value)
+    }
+    
+    /*
+     *
+     *  再生位置スライダーの値変更時処理（曲の再生位置の更新）
+     *
+     */
+    @IBAction func changePositionValue(_ sender: UISlider)
+    {
+//        if (sender.value <= Float(self.rangeSlider.lowerValue))
+//        {
+//            sender.value = Float(self.rangeSlider.lowerValue)
+//        }
+//        if (sender.value > Float(self.rangeSlider.upperValue))
+//        {
+//            sender.value = Float(self.rangeSlider.upperValue)
+//        }
+//        self.audioManager.player.currentPlaybackTime = Double(sender.value)
     }
     
 }
