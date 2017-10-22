@@ -10,12 +10,13 @@
 		13210CD11E359C8502F683E5 /* Pods_ODRIBAUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4B43D6FF262636AAA5EFE2 /* Pods_ODRIBAUITests.framework */; };
 		1FB543E1B158BBF011051A49 /* Pods_ODRIBATests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA127C6F2613362EA1B5F5E6 /* Pods_ODRIBATests.framework */; };
 		A27990DF1F9AE41500A60788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990DE1F9AE41500A60788 /* AppDelegate.swift */; };
-		A27990E11F9AE41500A60788 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990E01F9AE41500A60788 /* ViewController.swift */; };
+		A27990E11F9AE41500A60788 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990E01F9AE41500A60788 /* MainViewController.swift */; };
 		A27990E41F9AE41500A60788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A27990E21F9AE41500A60788 /* Main.storyboard */; };
 		A27990E61F9AE41500A60788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A27990E51F9AE41500A60788 /* Assets.xcassets */; };
 		A27990E91F9AE41500A60788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A27990E71F9AE41500A60788 /* LaunchScreen.storyboard */; };
 		A27990F41F9AE41600A60788 /* ODRIBATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990F31F9AE41600A60788 /* ODRIBATests.swift */; };
 		A27990FF1F9AE41600A60788 /* ODRIBAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990FE1F9AE41600A60788 /* ODRIBAUITests.swift */; };
+		A28736301F9C39B600E1764A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A287362F1F9C39B600E1764A /* MediaPlayer.framework */; };
 		A295258C1F9AF114007BCE3C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A295258B1F9AF114007BCE3C /* EditViewController.swift */; };
 		A2A0EE1D1F9AEC900022FD36 /* TriangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0EE1B1F9AEC900022FD36 /* TriangleButton.swift */; };
 		A2A0EE1E1F9AEC900022FD36 /* InvertedTriangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0EE1C1F9AEC900022FD36 /* InvertedTriangleButton.swift */; };
@@ -47,7 +48,7 @@
 		9A4BBE1510B4CA5B2026D208 /* Pods-ODRIBA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBA.release.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBA/Pods-ODRIBA.release.xcconfig"; sourceTree = "<group>"; };
 		A27990DB1F9AE41500A60788 /* ODRIBA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ODRIBA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27990DE1F9AE41500A60788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A27990E01F9AE41500A60788 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A27990E01F9AE41500A60788 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A27990E31F9AE41500A60788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A27990E51F9AE41500A60788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A27990E81F9AE41500A60788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		A27990FA1F9AE41600A60788 /* ODRIBAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ODRIBAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27990FE1F9AE41600A60788 /* ODRIBAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODRIBAUITests.swift; sourceTree = "<group>"; };
 		A27991001F9AE41600A60788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A287362F1F9C39B600E1764A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		A295258B1F9AF114007BCE3C /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		A2A0EE1B1F9AEC900022FD36 /* TriangleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangleButton.swift; path = "../../三角形ボタンサンプル/TriangleButton.swift"; sourceTree = "<group>"; };
 		A2A0EE1C1F9AEC900022FD36 /* InvertedTriangleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvertedTriangleButton.swift; path = "../../三角形ボタンサンプル/InvertedTriangleButton.swift"; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A28736301F9C39B600E1764A /* MediaPlayer.framework in Frameworks */,
 				A6789C17F5D773087AB326E8 /* Pods_ODRIBA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				A27990DE1F9AE41500A60788 /* AppDelegate.swift */,
-				A27990E01F9AE41500A60788 /* ViewController.swift */,
+				A27990E01F9AE41500A60788 /* MainViewController.swift */,
 				A27990E21F9AE41500A60788 /* Main.storyboard */,
 				A27990E51F9AE41500A60788 /* Assets.xcassets */,
 				A27990E71F9AE41500A60788 /* LaunchScreen.storyboard */,
@@ -167,6 +170,7 @@
 		B25B2E15CF1815EFD9756981 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A287362F1F9C39B600E1764A /* MediaPlayer.framework */,
 				2D52F1B8D54CABD317901D35 /* Pods_ODRIBA.framework */,
 				AA127C6F2613362EA1B5F5E6 /* Pods_ODRIBATests.framework */,
 				2B4B43D6FF262636AAA5EFE2 /* Pods_ODRIBAUITests.framework */,
@@ -456,7 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A295258C1F9AF114007BCE3C /* EditViewController.swift in Sources */,
-				A27990E11F9AE41500A60788 /* ViewController.swift in Sources */,
+				A27990E11F9AE41500A60788 /* MainViewController.swift in Sources */,
 				A27990DF1F9AE41500A60788 /* AppDelegate.swift in Sources */,
 				A2A0EE1E1F9AEC900022FD36 /* InvertedTriangleButton.swift in Sources */,
 				A2A0EE1D1F9AEC900022FD36 /* TriangleButton.swift in Sources */,

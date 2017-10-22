@@ -10,15 +10,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ODRIBA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="ODRIBA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f9x-Kq-QuW">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f9x-Kq-QuW" userLabel="updownView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -27,8 +27,12 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.72156862749999995" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
-                                        <inset key="titleEdgeInsets" minX="-180" minY="0.0" maxX="0.0" maxY="350"/>
+                                        <inset key="titleEdgeInsets" minX="-190" minY="0.0" maxX="0.0" maxY="350"/>
                                         <state key="normal" title="DOWN"/>
+                                        <connections>
+                                            <action selector="btnDownAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="53U-xA-Qes"/>
+                                            <segue destination="eKY-PM-cFR" kind="presentation" identifier="goEdit_DOWN" id="gFB-dr-Zrn"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ht9-SU-yX9" customClass="TriangleButton" customModule="ODRIBA" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
@@ -37,14 +41,11 @@
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
                                         <inset key="titleEdgeInsets" minX="0.0" minY="390" maxX="-270" maxY="0.0"/>
                                         <state key="normal" title="UP"/>
+                                        <connections>
+                                            <action selector="btnUpAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hHv-aB-Hjj"/>
+                                            <segue destination="eKY-PM-cFR" kind="presentation" identifier="goEdit_UP" id="eII-FC-8UU"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="このエリアをタップして音楽を選択してください" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qx0-H0-FuL">
-                                        <rect key="frame" x="97" y="530" width="270" height="85"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="このエリアをタップして音楽を選択してください" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xst-uQ-sSX">
                                         <rect key="frame" x="8" y="28" width="270" height="85"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -52,7 +53,14 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="昇降中..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Br-HZ-DLN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="このエリアをタップして音楽を選択してください" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qx0-H0-FuL">
+                                        <rect key="frame" x="97" y="530" width="270" height="85"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="昇降中..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Br-HZ-DLN">
                                         <rect key="frame" x="0.0" y="281" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.79984482020547942" colorSpace="calibratedRGB"/>
@@ -78,6 +86,15 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="btnDOWN" destination="S3u-aY-s1O" id="Xkh-dt-mve"/>
+                        <outlet property="btnInfo" destination="thk-YL-e5n" id="Bfg-2O-uqf"/>
+                        <outlet property="btnUP" destination="Ht9-SU-yX9" id="O5L-Hz-ZQQ"/>
+                        <outlet property="btnUPDOWN" destination="HFT-BQ-Jny" id="oUy-Lc-sEX"/>
+                        <outlet property="lblDOWNMessage" destination="xst-uQ-sSX" id="QtZ-Ou-13R"/>
+                        <outlet property="lblMessage" destination="5Br-HZ-DLN" id="vg4-SR-ieZ"/>
+                        <outlet property="lblUPMessage" destination="qx0-H0-FuL" id="oxo-uq-VyA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,8 +113,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="dty-yC-bG5">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="t0l-Ls-dCh"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="QH2-5B-EQy"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="t0l-Ls-dCh">
+                                            <connections>
+                                                <action selector="btnBackAction:" destination="eKY-PM-cFR" id="HbT-jv-k9Q"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="QH2-5B-EQy">
+                                            <connections>
+                                                <action selector="btnSaveAction:" destination="eKY-PM-cFR" id="jhK-Cd-R8p"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -112,6 +137,7 @@
                     </view>
                     <connections>
                         <outlet property="musicToolBar" destination="dlD-Ts-kkZ" id="dYe-lc-yxB"/>
+                        <outlet property="navItems" destination="dty-yC-bG5" id="RxN-Kj-Zkf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRf-IH-Tcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,5 +145,8 @@
             <point key="canvasLocation" x="842" y="34"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gFB-dr-Zrn"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
