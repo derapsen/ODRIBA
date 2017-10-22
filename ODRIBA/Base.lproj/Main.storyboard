@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MnA-Xs-mR5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -31,7 +31,7 @@
                                         <state key="normal" title="DOWN"/>
                                         <connections>
                                             <action selector="btnDownAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="53U-xA-Qes"/>
-                                            <segue destination="eKY-PM-cFR" kind="presentation" identifier="goEdit_DOWN" id="gFB-dr-Zrn"/>
+                                            <segue destination="eKY-PM-cFR" kind="presentation" identifier="goEdit" id="gFB-dr-Zrn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ht9-SU-yX9" customClass="TriangleButton" customModule="ODRIBA" customModuleProvider="target">
@@ -43,7 +43,7 @@
                                         <state key="normal" title="UP"/>
                                         <connections>
                                             <action selector="btnUpAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hHv-aB-Hjj"/>
-                                            <segue destination="eKY-PM-cFR" kind="presentation" identifier="goEdit_UP" id="eII-FC-8UU"/>
+                                            <segue destination="eKY-PM-cFR" kind="presentation" identifier="goEdit" id="eII-FC-8UU"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="このエリアをタップして音楽を選択してください" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xst-uQ-sSX">
@@ -75,16 +75,16 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Zj2-aU-jb4"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="HPy-OR-VlQ"/>
                                     <barButtonItem title="Item" id="HFT-BQ-Jny"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="eNK-1e-hP5"/>
                                     <barButtonItem title="Item" id="thk-YL-e5n"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="D1k-aH-tI1"/>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="g7B-jB-Qei"/>
                     </view>
                     <connections>
                         <outlet property="btnDOWN" destination="S3u-aY-s1O" id="Xkh-dt-mve"/>
@@ -108,45 +108,181 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="L3e-i0-j4m">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="dty-yC-bG5">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="t0l-Ls-dCh">
-                                            <connections>
-                                                <action selector="btnBackAction:" destination="eKY-PM-cFR" id="HbT-jv-k9Q"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="QH2-5B-EQy">
-                                            <connections>
-                                                <action selector="btnSaveAction:" destination="eKY-PM-cFR" id="jhK-Cd-R8p"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="dlD-Ts-kkZ">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items/>
                             </toolbar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z99-7c-zkd" userLabel="editView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="L3e-i0-j4m">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="safeArea" id="22V-FV-1Sx"/>
+                                <items>
+                                    <navigationItem title="Title" id="dty-yC-bG5">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="t0l-Ls-dCh"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="QH2-5B-EQy"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="c7n-Yo-IFW"/>
+                        <viewLayoutGuide key="safeArea" id="rZt-gr-doX"/>
                     </view>
                     <connections>
                         <outlet property="musicToolBar" destination="dlD-Ts-kkZ" id="dYe-lc-yxB"/>
                         <outlet property="navItems" destination="dty-yC-bG5" id="RxN-Kj-Zkf"/>
+                        <outlet property="viewEdit" destination="Z99-7c-zkd" id="5ht-bf-o1h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jRf-IH-Tcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="842" y="34"/>
+            <point key="canvasLocation" x="840.79999999999995" y="33.733133433283363"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tGM-Yy-ful">
+            <objects>
+                <navigationController id="MnA-Xs-mR5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="oxK-D3-GkO">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NC3-aG-SlV" kind="relationship" relationship="rootViewController" id="iDm-CF-Mga"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fK-re-C19" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21" y="791"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="4qK-GK-Dsc">
+            <objects>
+                <viewController id="ob2-iI-b0p" customClass="EditViewController" customModule="ODRIBA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ue5-Te-Ccg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="xKQ-7l-lbM">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items/>
+                            </toolbar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r77-NL-bJG" userLabel="editView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="9BR-de-l3q"/>
+                    </view>
+                    <connections>
+                        <outlet property="musicToolBar" destination="xKQ-7l-lbM" id="fas-RA-AaS"/>
+                        <outlet property="viewEdit" destination="r77-NL-bJG" id="tjh-7P-91k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HsG-nE-zJi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1626" y="789"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="zFU-Qu-DOJ">
+            <objects>
+                <viewController id="NC3-aG-SlV" customClass="MainViewController" customModule="ODRIBA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OHn-XK-jbv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Tn-Af-ByX" userLabel="updownView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kl-tI-jga" customClass="InvertedTriangleButton" customModule="ODRIBA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.72156862749999995" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                        <inset key="titleEdgeInsets" minX="-190" minY="0.0" maxX="0.0" maxY="300"/>
+                                        <state key="normal" title="DOWN"/>
+                                        <connections>
+                                            <action selector="btnDownAction:" destination="NC3-aG-SlV" eventType="touchUpInside" id="lmp-0p-8eE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndF-eh-w3E" customClass="TriangleButton" customModule="ODRIBA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.62745098040000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="310" maxX="-270" maxY="0.0"/>
+                                        <state key="normal" title="UP"/>
+                                        <connections>
+                                            <action selector="btnUpAction:" destination="NC3-aG-SlV" eventType="touchUpInside" id="1tM-LN-BPZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="このエリアをタップして音楽を選択してください" textAlignment="justified" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95d-kK-QVr">
+                                        <rect key="frame" x="8" y="31" width="300" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="昇降中..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odb-ah-Fru">
+                                        <rect key="frame" x="0.0" y="271" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.79984482020000003" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="32"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="このエリアをタップして音楽を選択してください" textAlignment="justified" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSd-LY-U1D">
+                                        <rect key="frame" x="67" y="515" width="300" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="aVs-qb-GlM">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DaQ-fz-QfD"/>
+                                    <barButtonItem title="Item" id="GX2-mF-wcd"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="CDe-XJ-jpe"/>
+                                    <barButtonItem title="Item" id="NU4-3T-Pdd"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="FbQ-TK-Jtg"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="QOo-RG-mbp"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WLx-Oh-qps"/>
+                    <connections>
+                        <outlet property="btnDOWN" destination="5kl-tI-jga" id="gq8-oS-cOw"/>
+                        <outlet property="btnInfo" destination="NU4-3T-Pdd" id="mcu-fR-M3G"/>
+                        <outlet property="btnUP" destination="ndF-eh-w3E" id="bjM-7l-6Ym"/>
+                        <outlet property="btnUPDOWN" destination="GX2-mF-wcd" id="gvD-s3-0Y0"/>
+                        <outlet property="lblDOWNMessage" destination="95d-kK-QVr" id="0BV-H4-XEm"/>
+                        <outlet property="lblMessage" destination="Odb-ah-Fru" id="WFi-Be-r07"/>
+                        <outlet property="lblUPMessage" destination="iSd-LY-U1D" id="qZM-pI-QY5"/>
+                        <segue destination="ob2-iI-b0p" kind="show" identifier="goEdit" id="Xdh-fi-fmg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gC9-Vr-aw3" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="735" y="790"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gFB-dr-Zrn"/>
+        <segue reference="eII-FC-8UU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

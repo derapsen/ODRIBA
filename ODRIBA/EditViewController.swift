@@ -13,10 +13,18 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
 {
 
     @IBOutlet weak var navItems: UINavigationItem!
+    @IBOutlet weak var viewEdit: UIView!
     @IBOutlet weak var musicToolBar: UIToolbar!
     
+    // 受け取る用のインスタンス変数
+    var navTitle: String = ""
+    var colorBackground: UIColor?
+    
+    // 保存ボタン設定
+    let btnSave = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(EditViewController.saveTapAction(sender:)))
+    
     // 音楽編集UIToolBarの各ボタン設定
-    let btnSelect = UIBarButtonItem(title: "Select", style: UIBarButtonItemStyle.done, target: self, action: #selector(EditViewController.musicControllTapAction(sender:)))
+    let btnSelect = UIBarButtonItem(title: "Select", style: UIBarButtonItemStyle.done, target: self, action: #selector(EditViewController.musicSelectTapAction(sender:)))
     let btnPlay = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.play, target: self, action: #selector(EditViewController.musicControllTapAction(sender:)))
     let btnPause = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.pause, target: self, action: #selector(EditViewController.musicControllTapAction(sender:)))
     let flexibleItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
@@ -32,7 +40,21 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         let items = [btnSelect, flexibleItem, btnPlay, flexibleItem, btnPause]
         // UIToolBarのプロパティitemsに代入
         self.musicToolBar.items = items
-
+        
+        // NavigationBarのタイトル、保存ボタンの追加
+        self.navigationItem.title = self.navTitle
+        self.navigationItem.setRightBarButton(self.btnSave, animated: true)
+        
+        // 画面背景の設定
+        self.viewEdit.backgroundColor = self.colorBackground
+    }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        
+//        self.audioManager.player.pause()
+//        self.audioManager.player.currentPlaybackTime = self.audioManager.startTime!
     }
 
     override func didReceiveMemoryWarning()
@@ -40,22 +62,6 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         super.didReceiveMemoryWarning()
     }
     
-    /*
-     *
-     *  ミュージックライブラリアクセスボタン処理
-     *
-     */
-    func selectTapAction(sender: UIButton)
-    {
-        // MPMediaPickerControllerのインスタンスを作成
-        let picker = MPMediaPickerController()
-        // ピッカーのデリゲートを設定
-        picker.delegate = self
-        // 複数選択を不可にする。（trueにすると、複数選択できる）
-        picker.allowsPickingMultipleItems = false
-        // ピッカーを表示する
-        present(picker, animated: true, completion: nil)
-    }
     
     /*
      *
@@ -136,10 +142,27 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     
     /*
      *
+     *  ミュージックライブラリアクセスボタン処理
+     *
+     */
+    @objc func musicSelectTapAction(sender: UIBarButtonItem)
+    {
+        // MPMediaPickerControllerのインスタンスを作成
+        let picker = MPMediaPickerController()
+        // ピッカーのデリゲートを設定
+        picker.delegate = self
+        // 複数選択を不可にする。（trueにすると、複数選択できる）
+        picker.allowsPickingMultipleItems = false
+        // ピッカーを表示する
+        present(picker, animated: true, completion: nil)
+    }
+    
+    /*
+     *
      *  再生・一時停止ボタン処理
      *
      */
-    @objc func musicControllTapAction(sender: UIButton)
+    @objc func musicControllTapAction(sender: UIBarButtonItem)
     {
         switch (sender.tag)
         {
@@ -170,22 +193,9 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      *  音楽設定保存ボタン処理
      *
      */
-    @IBAction func btnSaveAction(_ sender: Any)
+    @objc func saveTapAction(sender: UIBarButtonItem)
     {
         
     }
     
-    /*
-     *
-     *  戻るボタン処理
-     *
-     */
-    @IBAction func btnBackAction(_ sender: Any)
-    {
-//        self.audioManager.player.pause()
-//        self.audioManager.player.currentPlaybackTime = self.audioManager.startTime!
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-
 }
