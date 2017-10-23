@@ -48,24 +48,24 @@ class MainViewController: UIViewController
         {
             self.btnUP.backgroundColor = self.UIColorFromRGB(rgbValue: 0xFFA000)
             let upMusicColle = audioManager.upMusicInfo()
-            self.btnUP.titleLabel?.text = upMusicColle.items.first?.title
+            self.lblUPMessage.text = upMusicColle.items.first?.title
         }
         else
         {
             self.btnUP.backgroundColor = UIColor.lightGray
-            self.btnUP.titleLabel?.text = "このエリアをタップして音楽を選択してください"
+            self.lblUPMessage.text = "このエリアをタップして音楽を選択してください"
         }
         
         if (self.audioManager.isDownColle())
         {
             self.btnDOWN.backgroundColor = self.UIColorFromRGB(rgbValue: 0x00B8FA)
             let downMusicColle = audioManager.downMusicInfo()
-            self.btnDOWN.titleLabel?.text = downMusicColle.items.first?.title
+            self.lblDOWNMessage.text = downMusicColle.items.first?.title
         }
         else
         {
             self.btnDOWN.backgroundColor = UIColor.lightGray
-            self.btnDOWN.titleLabel?.text = "このエリアをタップして音楽を選択してください"
+            self.lblDOWNMessage.text = "このエリアをタップして音楽を選択してください"
         }
     }
     
@@ -88,7 +88,29 @@ class MainViewController: UIViewController
      */
     @IBAction func btnUpAction(_ sender: Any)
     {
-        performSegue(withIdentifier: "goEdit", sender: "UP")
+        // 楽曲設定情報がない場合のアラートを作成する
+        let alert = UIAlertController(title: "楽曲を選択してください",
+                                      message: "楽曲編集画面に移動します",
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        
+        // 閉じるボタンを作成する
+        let cancelAction = UIAlertAction(title: "閉じる",
+                                         style: UIAlertActionStyle.cancel,
+                                         handler:
+            {
+                (action:UIAlertAction) -> Void in
+                
+                self.performSegue(withIdentifier: "goEdit", sender: "UP")
+            }
+        )
+        
+        // アラートに閉じるボタンを追加する
+        alert.addAction(cancelAction)
+        
+        // アラートを表示する
+        self.present(alert,
+                     animated: true,
+                     completion: nil)
     }
     
     /*
@@ -98,7 +120,29 @@ class MainViewController: UIViewController
      */
     @IBAction func btnDownAction(_ sender: Any)
     {
-        performSegue(withIdentifier: "goEdit", sender: "DOWN")
+        // 楽曲設定情報がない場合のアラートを作成する
+        let alert = UIAlertController(title: "楽曲を選択してください",
+                                      message: "楽曲編集画面に移動します",
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        
+        // 閉じるボタンを作成する
+        let cancelAction = UIAlertAction(title: "閉じる",
+                                         style: UIAlertActionStyle.cancel,
+                                         handler:
+            {
+                (action:UIAlertAction) -> Void in
+                
+                self.performSegue(withIdentifier: "goEdit", sender: "DOWN")
+            }
+        )
+        
+        // アラートに閉じるボタンを追加する
+        alert.addAction(cancelAction)
+        
+        // アラートを表示する
+        self.present(alert,
+                     animated: true,
+                     completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -157,7 +201,8 @@ class MainViewController: UIViewController
      */
     @IBAction func btnUPDOWNTapAction(_ sender: UIBarButtonItem)
     {
-        
+        self.lblMessage.isHidden = false
+        self.btnUPDOWN.image = UIImage(named: "stairs")
     }
     
     /*

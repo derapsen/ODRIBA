@@ -73,11 +73,10 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         self.btnPause.isEnabled = false
         self.btnPlay.isEnabled = true
         
-        self.sliderRange.isHidden = true
-        self.sliderPosition.isHidden = true
-        
         if (!self.isColle!)
         {
+            self.sliderPosition.isEnabled = false
+            
             // MPMediaPickerControllerのインスタンスを作成
             let picker = MPMediaPickerController()
             // ピッカーのデリゲートを設定
@@ -89,8 +88,7 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         }
         else
         {
-            self.sliderRange.isHidden = true
-            self.sliderPosition.isHidden = true
+            self.sliderPosition.isEnabled = true
         }
     }
     
@@ -101,22 +99,34 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         // 過去の楽曲情報があるなら
         if (self.audioManager.isUpColle())
         {
-            self.btnSave.isEnabled = true
-            
             if (self.updownFlag == 1)
             {
+                self.btnSave.isEnabled = true
+                self.sliderPosition.isEnabled = true
+                
                 let mediaColleUp = audioManager.upMusicInfo()
                 self.mediaColle = mediaColleUp
                 let mediaItemUp = mediaColleUp.items.first
                 self.Setting(mediaItem: mediaItemUp!)
             }
         }
-        else if (self.audioManager.isDownColle())
+        else
         {
-            self.btnSave.isEnabled = true
+            self.btnSave.isEnabled = false
             
+            self.imgArtwork.backgroundColor = UIColor.gray
+            self.lblSong.text = "楽曲情報がありません"
+            self.lblAlbum.text = "楽曲情報がありません"
+            self.lblArtist.text = "楽曲情報がありません"
+        }
+        
+        if (self.audioManager.isDownColle())
+        {
             if (self.updownFlag == 2)
             {
+                self.btnSave.isEnabled = true
+                self.sliderPosition.isEnabled = true
+                
                 let mediaColleDown = audioManager.downMusicInfo()
                 self.mediaColle = mediaColleDown
                 let mediaItemDown = mediaColleDown.items.first
@@ -182,12 +192,6 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      */
     func Setting(mediaItem: MPMediaItem)
     {
-        if (!self.isColle!)
-        {
-            return
-        }
-        
-        
         updateSongInformationUI(mediaItem: mediaItem)
         // 再生範囲スライダーの最小値・最大値
         self.sliderRange.minimumValue = 0
@@ -399,8 +403,6 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         self.present(alert,
                      animated: true,
                      completion: nil)
-        
-        self.present(alert, animated: true, completion: nil)
     }
     
     /*
