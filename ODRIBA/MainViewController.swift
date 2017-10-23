@@ -11,6 +11,9 @@ import UIKit
 
 class MainViewController: UIViewController
 {
+    // 楽曲管理シングルトン
+    var audioManager = AudioManager.sharedManager
+    
     // 中央のメッセージラベル
     @IBOutlet weak var lblMessage: UILabel!
     
@@ -39,6 +42,31 @@ class MainViewController: UIViewController
         super.viewWillAppear(animated)
         // NavigationBar非表示
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        
+        if (self.audioManager.isUpColle())
+        {
+            self.btnUP.backgroundColor = self.UIColorFromRGB(rgbValue: 0xFFA000)
+            let upMusicColle = audioManager.upMusicInfo()
+            self.btnUP.titleLabel?.text = upMusicColle.items.first?.title
+        }
+        else
+        {
+            self.btnUP.backgroundColor = UIColor.lightGray
+            self.btnUP.titleLabel?.text = "このエリアをタップして音楽を選択してください"
+        }
+        
+        if (self.audioManager.isDownColle())
+        {
+            self.btnDOWN.backgroundColor = self.UIColorFromRGB(rgbValue: 0x00B8FA)
+            let downMusicColle = audioManager.downMusicInfo()
+            self.btnDOWN.titleLabel?.text = downMusicColle.items.first?.title
+        }
+        else
+        {
+            self.btnDOWN.backgroundColor = UIColor.lightGray
+            self.btnDOWN.titleLabel?.text = "このエリアをタップして音楽を選択してください"
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -84,11 +112,15 @@ class MainViewController: UIViewController
             {
                 editVC.navTitle = "編集画面：UP"
                 editVC.colorBackground = self.UIColorFromRGB(rgbValue: 0xFFA000)
+                editVC.updownFlag = 1
+                editVC.isColle = self.audioManager.isUpColle()
             }
             else
             {
                 editVC.navTitle = "編集画面：DOWN"
                 editVC.colorBackground = self.UIColorFromRGB(rgbValue: 0x00B8FA)
+                editVC.updownFlag = 2
+                editVC.isColle = self.audioManager.isDownColle()
             }
         }
         else if (segue.identifier == "goCredit")

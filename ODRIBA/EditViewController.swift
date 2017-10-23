@@ -14,6 +14,9 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
 {
     // 楽曲管理シングルトン
     var audioManager = AudioManager.sharedManager
+    
+    // 再生位置管理タイマー
+    var timerPosition: Timer?
 
     @IBOutlet weak var viewEdit: UIView!
     @IBOutlet weak var musicToolBar: UIToolbar!
@@ -21,6 +24,13 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     // 受け取る用のインスタンス変数
     var navTitle: String = ""
     var colorBackground: UIColor?
+    var updownFlag: Int = 0
+    var isColle: Bool?
+    
+    // 保存用インスタンス変数
+    var mediaColle: MPMediaItemCollection?
+    var mediaStartTime: Double?
+    var mediaEndTime: Double?
     
     // 保存ボタン設定
     let btnSave = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(EditViewController.saveTapAction(sender:)))
@@ -60,28 +70,87 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         // 画面背景の設定
         self.viewEdit.backgroundColor = self.colorBackground
         
-        // 過去の楽曲情報があるなら
-//        if (self.audioManager.mediaItem != nil)
-//        {
-//            self.Setting()
-//        }
-        
-//        var timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.changePosition), userInfo: nil, repeats: true)
-        
         self.btnPause.isEnabled = false
         self.btnPlay.isEnabled = true
-//        self.rangeSlider.alpha = 1
-//        self.rangeSlider.isEnabled = true
-//        self.scrubSlider.isEnabled = true
+        
+        self.sliderRange.isHidden = true
+        self.sliderPosition.isHidden = true
+        
+        if (!self.isColle!)
+        {
+            // MPMediaPickerControllerのインスタンスを作成
+            let picker = MPMediaPickerController()
+            // ピッカーのデリゲートを設定
+            picker.delegate = self
+            // 複数選択を不可にする。（trueにすると、複数選択できる）
+            picker.allowsPickingMultipleItems = false
+            // ピッカーを表示する
+            present(picker, animated: true, completion: nil)
+        }
+        else
+        {
+            self.sliderRange.isHidden = true
+            self.sliderPosition.isHidden = true
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        // 過去の楽曲情報があるなら
+        if (self.audioManager.isUpColle())
+        {
+            self.btnSave.isEnabled = true
+            
+            if (self.updownFlag == 1)
+            {
+                let mediaColleUp = audioManager.upMusicInfo()
+                self.mediaColle = mediaColleUp
+                let mediaItemUp = mediaColleUp.items.first
+                self.Setting(mediaItem: mediaItemUp!)
+            }
+        }
+        else if (self.audioManager.isDownColle())
+        {
+            self.btnSave.isEnabled = true
+            
+            if (self.updownFlag == 2)
+            {
+                let mediaColleDown = audioManager.downMusicInfo()
+                self.mediaColle = mediaColleDown
+                let mediaItemDown = mediaColleDown.items.first
+                self.Setting(mediaItem: mediaItemDown!)
+            }
+        }
+        else
+        {
+            self.btnSave.isEnabled = false
+            
+            self.imgArtwork.backgroundColor = UIColor.gray
+            self.lblSong.text = "楽曲情報がありません"
+            self.lblAlbum.text = "楽曲情報がありません"
+            self.lblArtist.text = "楽曲情報がありません"
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        if (!self.isColle!)
+        {
+            return
+        }
+        self.timerPosition = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.changePosition), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool)
     {
         super.viewWillDisappear(animated)
         
-//        self.audioManager.player.pause()
         self.barStatusPause()
-//        self.audioManager.player.currentPlaybackTime = self.audioManager.startTime!
+        self.timerPosition?.invalidate()
     }
 
     override func didReceiveMemoryWarning()
@@ -94,13 +163,16 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      *  曲情報から各部品の設定を行う
      *
      */
-    func changePosition()
+    @objc func changePosition()
     {
-//        self.scrubSlider.value = Float(self.audioManager.player.currentPlaybackTime)
-//        if (self.scrubSlider.value >= Float(self.rangeSlider.upperValue))
-//        {
-//            self.barStatusPause()
-//        }
+        self.sliderPosition.value = Float(self.audioManager.player.currentPlaybackTime)
+        if (self.sliderPosition.value >= Float(self.sliderRange.upperValue))
+        {
+            self.audioManager.player.pause()
+            self.barStatusPause()
+            self.sliderPosition.value = Float(self.sliderRange.lowerValue)
+            self.audioManager.player.currentPlaybackTime = TimeInterval(self.sliderPosition.value)
+        }
     }
     
     /*
@@ -108,27 +180,30 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      *  曲情報から各部品の設定を行う
      *
      */
-    func Setting()
+    func Setting(mediaItem: MPMediaItem)
     {
-//        updateSongInformationUI(mediaItem: self.audioManager.mediaItem!)
-//        // 再生範囲スライダーの最小値・最大値
-//        self.rangeSlider.minimumValue = 0
-//        self.rangeSlider.maximumValue = (self.audioManager.mediaItem?.playbackDuration)!
-//        // 再生範囲スライダーの下限値・上限値
-//        self.rangeSlider.lowerValue = 0
-//        self.rangeSlider.upperValue = (self.audioManager.mediaItem?.playbackDuration)!
-//
-//        self.audioManager.ChangeStartTime(start: self.rangeSlider.lowerValue)
-//        self.audioManager.ChangeEndTime(end: self.rangeSlider.upperValue)
-//
-//        // 再生位置スライダーの最小値・最大値
-//        self.scrubSlider.minimumValue = 0
-//        self.scrubSlider.maximumValue = Float((self.audioManager.mediaItem?.playbackDuration)!)
-//        // 再生位置スライダーのつまみの初期位置
-//        self.scrubSlider.value = 0
-//
-//        // 音楽の再生位置を再生範囲スライダーの下限値にする
-//        self.audioManager.player.currentPlaybackTime = self.rangeSlider.lowerValue
+        if (!self.isColle!)
+        {
+            return
+        }
+        
+        
+        updateSongInformationUI(mediaItem: mediaItem)
+        // 再生範囲スライダーの最小値・最大値
+        self.sliderRange.minimumValue = 0
+        self.sliderRange.maximumValue = mediaItem.playbackDuration
+        // 再生範囲スライダーの下限値・上限値
+        self.sliderRange.lowerValue = 0
+        self.sliderRange.upperValue = mediaItem.playbackDuration
+
+        // 再生位置スライダーの最小値・最大値
+        self.sliderPosition.minimumValue = 0
+        self.sliderPosition.maximumValue = Float(mediaItem.playbackDuration)
+        // 再生位置スライダーのつまみの初期位置
+        self.sliderPosition.value = 0
+
+        // 音楽の再生位置を再生範囲スライダーの下限値にする
+        self.audioManager.player.currentPlaybackTime = self.sliderRange.lowerValue
     }
     
     
@@ -139,35 +214,34 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      */
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection)
     {
-//        // 選択した曲情報がmediaItemCollectionに入っているので、これをplayerにセット。
-//        //self.player.setQueue(with: mediaItemCollection) //
-//        self.audioManager.player.setQueue(with: mediaItemCollection)
-//
-//        // 選択した曲から最初の曲の情報を表示
-//        if let mediaItem = mediaItemCollection.items.first  //
-//        {
-//            self.audioManager.mediaItem = mediaItem
-//            updateSongInformationUI(mediaItem: self.audioManager.mediaItem!)
-//            // 再生範囲スライダーの最小値・最大値
-//            self.rangeSlider.minimumValue = 0
-//            self.rangeSlider.maximumValue = (self.audioManager.mediaItem?.playbackDuration)!
-//            // 再生範囲スライダーの下限値・上限値
-//            self.rangeSlider.lowerValue = 0
-//            self.rangeSlider.upperValue = (self.audioManager.mediaItem?.playbackDuration)!
-//
-//            self.audioManager.ChangeStartTime(start: self.rangeSlider.lowerValue)
-//            self.audioManager.ChangeEndTime(end: self.rangeSlider.upperValue)
-//
-//            // 再生位置スライダーの最小値・最大値
-//            self.scrubSlider.minimumValue = 0
-//            self.scrubSlider.maximumValue = Float((self.audioManager.mediaItem?.playbackDuration)!)
-//            // 再生位置スライダーのつまみの初期位置
-//            self.scrubSlider.value = 0
-//
-//            // 音楽の再生位置を再生範囲スライダーの下限値にする
-//            //self.player.currentPlaybackTime = self.rangeSlider.lowerValue
-//            self.audioManager.player.currentPlaybackTime = self.rangeSlider.lowerValue
-//        }
+        self.isColle = true
+        
+        // 選択した曲情報がmediaItemCollectionに入っているので、これをplayerにセット。
+        self.audioManager.player.setQueue(with: mediaItemCollection)
+
+        self.mediaColle = mediaItemCollection
+        
+        // 選択した曲から最初の曲の情報を表示
+        if let mediaItem = mediaItemCollection.items.first
+        {
+            updateSongInformationUI(mediaItem: mediaItem)
+            // 再生範囲スライダーの最小値・最大値
+            self.sliderRange.minimumValue = 0
+            self.sliderRange.maximumValue = mediaItem.playbackDuration
+            // 再生範囲スライダーの下限値・上限値
+            self.sliderRange.lowerValue = 0
+            self.sliderRange.upperValue = mediaItem.playbackDuration
+
+            // 再生位置スライダーの最小値・最大値
+            self.sliderPosition.minimumValue = 0
+            self.sliderPosition.maximumValue = Float(mediaItem.playbackDuration)
+            // 再生位置スライダーのつまみの初期位置
+            self.sliderPosition.value = 0
+
+            // 音楽の再生位置を再生範囲スライダーの下限値にする
+            //self.player.currentPlaybackTime = self.sliderRange.lowerValue
+            self.audioManager.player.currentPlaybackTime = self.sliderRange.lowerValue
+        }
         // ピッカーを閉じ、破棄する
         dismiss(animated: true, completion: nil)
     }
@@ -179,23 +253,27 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      */
     func updateSongInformationUI(mediaItem: MPMediaItem)
     {
-//        // 曲情報表示
-//        self.lblArtist.text = mediaItem.artist ?? "不明なアーティスト"
-//        self.lblAlbum.text = mediaItem.albumTitle ?? "不明なアルバム"
-//        self.lblSong.text = mediaItem.title ?? "不明な曲"
-//
-//        // アートワーク表示
-//        if let artwork = mediaItem.artwork
-//        {
-//            let image = artwork.image(at: self.imgArtwork.bounds.size)
-//            self.imgArtwork.image = image
-//        }
-//        else
-//        {
-//            // アートワークがないとき
-//            self.imgArtwork.image = nil
-//            self.imgArtwork.backgroundColor = UIColor.gray
-//        }
+        // 曲情報表示
+        self.lblSong.text = mediaItem.title ?? "不明な曲"
+        self.lblAlbum.text = mediaItem.albumTitle ?? "不明なアルバム"
+        self.lblArtist.text = mediaItem.artist ?? "不明なアーティスト"
+        
+        self.lblSong.sizeToFit()
+        self.lblAlbum.sizeToFit()
+        self.lblArtist.sizeToFit()
+
+        // アートワーク表示
+        if let artwork = mediaItem.artwork
+        {
+            let image = artwork.image(at: self.imgArtwork.bounds.size)
+            self.imgArtwork.image = image
+        }
+        else
+        {
+            // アートワークがないとき
+            self.imgArtwork.image = nil
+            self.imgArtwork.backgroundColor = UIColor.gray
+        }
     }
     
     /*
@@ -205,6 +283,9 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      */
     func mediaPickerDidCancel(_ mediaPicker: MPMediaPickerController)
     {
+        self.sliderRange.isHidden = true
+        self.sliderPosition.isHidden = true
+        
         // ピッカーを閉じ、破棄する
         dismiss(animated: true, completion: nil)
     }
@@ -237,9 +318,9 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         {
             case 1:
                 // 再生ボタンが押された時
-//                self.rangeSlider.alpha = 0.5
-//                self.rangeSlider.isEnabled = false
-//                self.audioManager.player.play()
+                self.sliderRange.alpha = 0.5
+                self.sliderRange.isEnabled = false
+                self.audioManager.player.play()
                 self.btnPause.isEnabled = true
                 self.btnPlay.isEnabled = false
                 print("tap play")
@@ -254,12 +335,12 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     
     func barStatusPause()
     {
-//        self.audioManager.player.pause()
+        self.audioManager.player.pause()
         self.btnPause.isEnabled = false
         self.btnPlay.isEnabled = true
-//        self.rangeSlider.alpha = 1
-//        self.rangeSlider.isEnabled = true
-//        self.scrubSlider.isEnabled = true
+        self.sliderRange.alpha = 1
+        self.sliderRange.isEnabled = true
+        self.sliderPosition.isEnabled = true
     }
 
     /*
@@ -269,7 +350,57 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      */
     @objc func saveTapAction(sender: UIBarButtonItem)
     {
+        self.barStatusPause()
         
+        if (self.mediaColle == nil)
+        {
+            return
+        }
+        
+        // アラートを作成する
+        let alert = UIAlertController(title: "保存",
+                                      message: "この設定を保存しますか？",
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        
+        // 保存ボタンを作成する
+        let saveAction = UIAlertAction(title: "保存",
+                                       style: UIAlertActionStyle.default,
+                                       handler:
+            {
+                (action:UIAlertAction) -> Void in
+                
+                if (self.updownFlag == 1)
+                {
+                    self.audioManager.saveUpItems(mediaColle: self.mediaColle!,
+                                                  startTime: self.sliderRange.lowerValue,
+                                                  endTime: self.sliderRange.upperValue)
+                    
+                }
+                if (self.updownFlag == 2)
+                {
+                    self.audioManager.saveDownItems(mediaColle: self.mediaColle!,
+                                                  startTime: self.sliderRange.lowerValue,
+                                                  endTime: self.sliderRange.upperValue)
+                }
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+        )
+        
+        // 閉じるボタンを作成する
+        let cancelAction = UIAlertAction(title: "閉じる",
+                                         style: UIAlertActionStyle.cancel,
+                                         handler: nil)
+        // アラートに保存・閉じるボタンを追加する
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        // アラートを表示する
+        self.present(alert,
+                     animated: true,
+                     completion: nil)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     /*
@@ -279,17 +410,15 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      */
     @IBAction func changeRangeValue(_ sender: RangeSlider)
     {
-//        if (sender.lowerValue >= Double(self.scrubSlider.value))
-//        {
-//            sender.lowerValue = Double(self.scrubSlider.value)
-//            self.audioManager.ChangeStartTime(start: sender.lowerValue)
-//        }
-//        if (sender.upperValue < Double(self.scrubSlider.value))
-//        {
-//            sender.upperValue = Double(self.scrubSlider.value)
-//            self.audioManager.ChangeEndTime(end: sender.upperValue)
-//        }
-//        self.audioManager.player.currentPlaybackTime = Double(self.scrubSlider.value)
+        if (sender.lowerValue >= Double(self.sliderPosition.value))
+        {
+            sender.lowerValue = Double(self.sliderPosition.value)
+        }
+        if (sender.upperValue < Double(self.sliderPosition.value))
+        {
+            sender.upperValue = Double(self.sliderPosition.value)
+        }
+        self.audioManager.player.currentPlaybackTime = Double(self.sliderPosition.value)
     }
     
     /*
@@ -299,15 +428,15 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      */
     @IBAction func changePositionValue(_ sender: UISlider)
     {
-//        if (sender.value <= Float(self.rangeSlider.lowerValue))
-//        {
-//            sender.value = Float(self.rangeSlider.lowerValue)
-//        }
-//        if (sender.value > Float(self.rangeSlider.upperValue))
-//        {
-//            sender.value = Float(self.rangeSlider.upperValue)
-//        }
-//        self.audioManager.player.currentPlaybackTime = Double(sender.value)
+        if (sender.value <= Float(self.sliderRange.lowerValue))
+        {
+            sender.value = Float(self.sliderRange.lowerValue)
+        }
+        if (sender.value > Float(self.sliderRange.upperValue))
+        {
+            sender.value = Float(self.sliderRange.upperValue)
+        }
+        self.audioManager.player.currentPlaybackTime = Double(sender.value)
     }
     
 }
