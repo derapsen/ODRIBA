@@ -18,12 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmW-HG-wjN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="gmW-HG-wjN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gmW-HG-wjN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Q1C-dP-mX3"/>
+                            <constraint firstItem="gmW-HG-wjN" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="m5S-q8-uYe"/>
+                            <constraint firstItem="gmW-HG-wjN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="nCI-oj-Nwm"/>
+                            <constraint firstItem="gmW-HG-wjN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="yB7-CF-4Vc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -32,4 +37,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splash" width="375" height="667"/>
+    </resources>
 </document>

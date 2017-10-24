@@ -23,17 +23,9 @@ class MainViewController: UIViewController
     @IBOutlet weak var lblDOWNMessage: UILabel!
     @IBOutlet weak var lblUPMessage: UILabel!
     
-    // UIToolBarのボタン
-    @IBOutlet weak var btnUPDOWN: UIBarButtonItem!
-    @IBOutlet weak var btnInfo: UIBarButtonItem!
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        // ToolBarのボタンにイメージを設定
-        self.btnInfo.image = UIImage(named: "information")
-        self.btnUPDOWN.image = UIImage(named: "standing")
         
     }
     
@@ -88,29 +80,7 @@ class MainViewController: UIViewController
      */
     @IBAction func btnUpAction(_ sender: Any)
     {
-        // 楽曲設定情報がない場合のアラートを作成する
-        let alert = UIAlertController(title: "楽曲を選択してください",
-                                      message: "楽曲編集画面に移動します",
-                                      preferredStyle: UIAlertControllerStyle.alert)
-        
-        // 閉じるボタンを作成する
-        let cancelAction = UIAlertAction(title: "閉じる",
-                                         style: UIAlertActionStyle.cancel,
-                                         handler:
-            {
-                (action:UIAlertAction) -> Void in
-                
-                self.performSegue(withIdentifier: "goEdit", sender: "UP")
-            }
-        )
-        
-        // アラートに閉じるボタンを追加する
-        alert.addAction(cancelAction)
-        
-        // アラートを表示する
-        self.present(alert,
-                     animated: true,
-                     completion: nil)
+        self.performSegue(withIdentifier: "goEdit", sender: "UP")
     }
     
     /*
@@ -120,29 +90,7 @@ class MainViewController: UIViewController
      */
     @IBAction func btnDownAction(_ sender: Any)
     {
-        // 楽曲設定情報がない場合のアラートを作成する
-        let alert = UIAlertController(title: "楽曲を選択してください",
-                                      message: "楽曲編集画面に移動します",
-                                      preferredStyle: UIAlertControllerStyle.alert)
-        
-        // 閉じるボタンを作成する
-        let cancelAction = UIAlertAction(title: "閉じる",
-                                         style: UIAlertActionStyle.cancel,
-                                         handler:
-            {
-                (action:UIAlertAction) -> Void in
-                
-                self.performSegue(withIdentifier: "goEdit", sender: "DOWN")
-            }
-        )
-        
-        // アラートに閉じるボタンを追加する
-        alert.addAction(cancelAction)
-        
-        // アラートを表示する
-        self.present(alert,
-                     animated: true,
-                     completion: nil)
+        self.performSegue(withIdentifier: "goEdit", sender: "DOWN")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -201,8 +149,106 @@ class MainViewController: UIViewController
      */
     @IBAction func btnUPDOWNTapAction(_ sender: UIBarButtonItem)
     {
+        var title: String = ""
+        var msg: String = ""
+        
+        // 閉じるボタンを作成する
+        let cancelAction = UIAlertAction(title: "閉じる",
+                                         style: UIAlertActionStyle.cancel,
+                                         handler: nil)
+        
+        if (audioManager.isUpColle() && !audioManager.isDownColle())
+        {
+            // 上りだけ設定済み
+            
+            title = "上りの曲のみ設定しています"
+            msg = "下りの曲は再生しません。"
+            
+            // アラートを作成する
+            let alert = UIAlertController(title: title,
+                                          message: msg,
+                                          preferredStyle: UIAlertControllerStyle.alert)
+            
+            // アラートに閉じるボタンを追加する
+            alert.addAction(cancelAction)
+            
+            // アラートを表示する
+            self.present(alert,
+                         animated: true,
+                         completion: nil)
+            
+        }
+        else if (!audioManager.isUpColle() && audioManager.isDownColle())
+        {
+            // 下りだけ設定済み
+            
+            title = "下りの曲のみ設定しています"
+            msg = "上りの曲は再生しません。"
+            
+            // アラートを作成する
+            let alert = UIAlertController(title: title,
+                                          message: msg,
+                                          preferredStyle: UIAlertControllerStyle.alert)
+            
+            // アラートに閉じるボタンを追加する
+            alert.addAction(cancelAction)
+            
+            // アラートを表示する
+            self.present(alert,
+                         animated: true,
+                         completion: nil)
+        }
+        else if (!audioManager.isUpColle() && !audioManager.isDownColle())
+        {
+            // 上り下り設定していない
+            
+            title = "楽曲を設定していません"
+            msg = "楽曲設定ボタンをタップし設定を行ってください。"
+            
+            // アラートを作成する
+            let alert = UIAlertController(title: title,
+                                          message: msg,
+                                          preferredStyle: UIAlertControllerStyle.alert)
+            
+            // 戻るボタンを作成する
+            let backAction = UIAlertAction(title: "戻る",
+                                             style: UIAlertActionStyle.cancel,
+                                             handler: nil)
+            
+            // アラートに閉じるボタンを追加する
+            alert.addAction(backAction)
+            
+            // アラートを表示する
+            self.present(alert,
+                         animated: true,
+                         completion: nil)
+            
+            return
+        }
+        else
+        {
+            print("all setting")
+            
+            title = "上りと下りの曲設定済み"
+            msg = "上りと下り曲どちらでも再生できます"
+            
+            // アラートを作成する
+            let alert = UIAlertController(title: title,
+                                          message: msg,
+                                          preferredStyle: UIAlertControllerStyle.alert)
+            
+            // アラートに閉じるボタンを追加する
+            alert.addAction(cancelAction)
+            
+            // アラートを表示する
+            self.present(alert,
+                         animated: true,
+                         completion: nil)
+        }
+        
+        
+        
         self.lblMessage.isHidden = false
-        self.btnUPDOWN.image = UIImage(named: "stairs")
     }
     
     /*

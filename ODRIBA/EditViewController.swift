@@ -112,12 +112,15 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         }
         else
         {
-            self.btnSave.isEnabled = false
-            
-            self.imgArtwork.backgroundColor = UIColor.gray
-            self.lblSong.text = "楽曲情報がありません"
-            self.lblAlbum.text = "楽曲情報がありません"
-            self.lblArtist.text = "楽曲情報がありません"
+            if (!self.isColle!)
+            {
+                self.btnSave.isEnabled = false
+                
+                self.imgArtwork.backgroundColor = UIColor.gray
+                self.lblSong.text = "楽曲情報がありません"
+                self.lblAlbum.text = "楽曲情報がありません"
+                self.lblArtist.text = "楽曲情報がありません"
+            }
         }
         
         if (self.audioManager.isDownColle())
@@ -135,12 +138,15 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         }
         else
         {
-            self.btnSave.isEnabled = false
-            
-            self.imgArtwork.backgroundColor = UIColor.gray
-            self.lblSong.text = "楽曲情報がありません"
-            self.lblAlbum.text = "楽曲情報がありません"
-            self.lblArtist.text = "楽曲情報がありません"
+            if (!self.isColle!)
+            {
+                self.btnSave.isEnabled = false
+                
+                self.imgArtwork.backgroundColor = UIColor.gray
+                self.lblSong.text = "楽曲情報がありません"
+                self.lblAlbum.text = "楽曲情報がありません"
+                self.lblArtist.text = "楽曲情報がありません"
+            }
         }
     }
     
@@ -193,6 +199,10 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     func Setting(mediaItem: MPMediaItem)
     {
         updateSongInformationUI(mediaItem: mediaItem)
+        
+        self.sliderRange.isHidden = false
+        self.sliderPosition.isHidden = false
+        
         // 再生範囲スライダーの最小値・最大値
         self.sliderRange.minimumValue = 0
         self.sliderRange.maximumValue = mediaItem.playbackDuration
@@ -219,6 +229,7 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection)
     {
         self.isColle = true
+        self.btnSave.isEnabled = true
         
         // 選択した曲情報がmediaItemCollectionに入っているので、これをplayerにセット。
         self.audioManager.player.setQueue(with: mediaItemCollection)
@@ -226,19 +237,19 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         self.mediaColle = mediaItemCollection
         
         // 選択した曲から最初の曲の情報を表示
-        if let mediaItem = mediaItemCollection.items.first
+        if let mediaItemFirst = mediaItemCollection.items.first
         {
-            updateSongInformationUI(mediaItem: mediaItem)
+            updateSongInformationUI(mediaItem: mediaItemFirst)
             // 再生範囲スライダーの最小値・最大値
             self.sliderRange.minimumValue = 0
-            self.sliderRange.maximumValue = mediaItem.playbackDuration
+            self.sliderRange.maximumValue = mediaItemFirst.playbackDuration
             // 再生範囲スライダーの下限値・上限値
             self.sliderRange.lowerValue = 0
-            self.sliderRange.upperValue = mediaItem.playbackDuration
+            self.sliderRange.upperValue = mediaItemFirst.playbackDuration
 
             // 再生位置スライダーの最小値・最大値
             self.sliderPosition.minimumValue = 0
-            self.sliderPosition.maximumValue = Float(mediaItem.playbackDuration)
+            self.sliderPosition.maximumValue = Float(mediaItemFirst.playbackDuration)
             // 再生位置スライダーのつまみの初期位置
             self.sliderPosition.value = 0
 
@@ -261,10 +272,6 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         self.lblSong.text = mediaItem.title ?? "不明な曲"
         self.lblAlbum.text = mediaItem.albumTitle ?? "不明なアルバム"
         self.lblArtist.text = mediaItem.artist ?? "不明なアーティスト"
-        
-        self.lblSong.sizeToFit()
-        self.lblAlbum.sizeToFit()
-        self.lblArtist.sizeToFit()
 
         // アートワーク表示
         if let artwork = mediaItem.artwork
@@ -287,8 +294,16 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      */
     func mediaPickerDidCancel(_ mediaPicker: MPMediaPickerController)
     {
-        self.sliderRange.isHidden = true
-        self.sliderPosition.isHidden = true
+        if (self.isColle!)
+        {
+            self.sliderRange.isHidden = false
+            self.sliderPosition.isHidden = false
+        }
+        else
+        {
+            self.sliderRange.isHidden = true
+            self.sliderPosition.isHidden = true
+        }
         
         // ピッカーを閉じ、破棄する
         dismiss(animated: true, completion: nil)
