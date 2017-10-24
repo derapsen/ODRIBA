@@ -15,18 +15,19 @@ class MainViewController: UIViewController
     // 楽曲管理シングルトン
     var audioManager = AudioManager.sharedManager
     
+    // 各変数
     var before_altitude: Double = 0
     var now_altitude: Double = 0
     var isUp: Bool = false
     var isDown: Bool = false
     var iskeisoku: Bool = false
-    
-    // 昇降計測用タイマー
-    var measure_timer: Timer?
+    var onceMusic: Bool = false
     
     // 待機時間カウント用変数
     var wait_count: Int = 0
-    var isWait: Bool = true
+    
+    // 待機時間カウントタイマー
+    var wait_timer: Timer?
     
     let altimeter = CMAltimeter()
     
@@ -61,9 +62,9 @@ class MainViewController: UIViewController
         // NavigationBar非表示
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        if (self.measure_timer != nil)
+        if (self.iskeisoku)
         {
-            self.measure_timer?.invalidate()
+            self.wait_timer?.invalidate()
             self.musicEndCheck_timer?.invalidate()
             self.Setting()
         }
@@ -99,22 +100,20 @@ class MainViewController: UIViewController
         // NavigationBar表示
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-        if (self.measure_timer != nil)
-        {
-            self.measure_timer?.invalidate()
-            self.musicEndCheck_timer?.invalidate()
-            self.Setting()
-        }
+        self.altimeter.stopRelativeAltitudeUpdates()
+        self.onceMusic = false
+        self.audioManager.player.pause()
+        self.musicEndCheck_timer?.invalidate()
+        self.Setting()
     }
     
     override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
-        // 上り下りの両方あれば計測開始
+        // 昇り降りの両方あれば計測開始
         if (self.audioManager.isUpColle() && self.audioManager.isDownColle())
         {
-            
             self.startUpdate()
         }
     }
@@ -139,15 +138,14 @@ class MainViewController: UIViewController
                     {
                         self.now_altitude = data?.relativeAltitude as! Double
                         
-                        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                        if (!self.iskeisoku)
+                        {
+                            self.lblMessage.isHidden = false
+                            self.iskeisoku = true
+                            self.before_altitude = self.now_altitude
+                        }
                         
-//                        if (self.measure_timer == nil)
-//                        {
-////                            self.iskeisoku = true
-//
-//                            self.before_altitude = self.now_altitude
-//                            self.measure_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.UpDownCheck), userInfo: nil, repeats: true)
-//                        }
+                        self.UpDownCheck()
                     }
             })
         }
@@ -159,68 +157,82 @@ class MainViewController: UIViewController
     
     /*
      *
-     *  上りか下りかの検出
+     *  昇りか降りかの検出
      *
      */
     @objc func UpDownCheck()
     {
-        if (self.now_altitude == 0)
+        if ((self.now_altitude >= -0.02 && self.now_altitude <= 0.02) && !self.onceMusic)
         {
             self.wait_count = 0
             self.before_altitude = self.now_altitude
             return
         }
         
-//        if (self.iskeisoku)
-//        {
-//            self.lblMessage.isHidden = false
-//        }
-//        else
-//        {
-//            self.lblMessage.isHidden = true
-//        }
-        
         if (self.now_altitude > self.before_altitude + 0.05)
         {
-            self.wait_count = 0
+            self.wait_timer?.invalidate()
+            
             self.isUp = true
             self.isDown = false
             
-            // 追加分
             self.musicSettingChange()
 
             self.before_altitude = self.now_altitude
         }
         else if (self.now_altitude < self.before_altitude - 0.05)
         {
-            self.wait_count = 0
+            self.wait_timer?.invalidate()
+            
             self.isUp = false
             self.isDown = true
             
-            // 追加分
             self.musicSettingChange()
             
             self.before_altitude = self.now_altitude
         }
         else
         {
-            self.wait_count += 1
+            if (self.wait_timer == nil)
+            {
+                self.wait_count = 0
+                
+                self.wait_timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.waitCount), userInfo: nil, repeats: true)
+            }
             self.isUp = false
             self.isDown = false
             
-            
-            
-            if (wait_count >= 5)
+            if (self.iskeisoku)
             {
-                // 曲を止める
-                self.audioManager.player.pause()
-                self.audioManager.player.currentPlaybackTime = self.musicStartTime
-                
-                self.measure_timer?.invalidate()
-                self.musicEndCheck_timer?.invalidate()
-                self.Setting()
+                if (self.wait_count >= 2)
+                {
+                    // 曲を止める
+                    self.audioManager.player.pause()
+                    self.audioManager.player.currentPlaybackTime = self.musicStartTime
+                    
+                    self.wait_timer?.invalidate()
+                    self.musicEndCheck_timer?.invalidate()
+                    self.onceMusic = false
+                    
+                    self.Setting()
+                    
+                    self.altimeter.stopRelativeAltitudeUpdates()
+                    self.startUpdate()
+                }
             }
         }
+    }
+    
+    /*
+     *
+     *  待機カウント処理
+     *
+     */
+    @objc func waitCount()
+    {
+        self.wait_count += 1
+        
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     
     /*
@@ -230,32 +242,46 @@ class MainViewController: UIViewController
      */
     func musicSettingChange()
     {
-        if (measure_timer == nil)
+        if (self.iskeisoku)
         {
             if (self.isUp)
             {
-                
-                
-                print("up music setting")
-                
-                self.audioManager.player.setQueue(with: self.audioManager.upMusicInfo()!)
-                
-                self.musicStartTime = self.audioManager.UD.object(forKey: self.audioManager.upStartTimeKey) as! TimeInterval
-                self.musicEndTime = self.audioManager.UD.object(forKey: self.audioManager.upEndTimeKey) as! TimeInterval
+                if (!self.onceMusic)
+                {
+                    print("up music setting")
+                    
+                    self.audioManager.player.setQueue(with: self.audioManager.upMusicInfo()!)
+                    
+                    self.musicStartTime = self.audioManager.UD.object(forKey: self.audioManager.upStartTimeKey) as! TimeInterval
+                    self.musicEndTime = self.audioManager.UD.object(forKey: self.audioManager.upEndTimeKey) as! TimeInterval
+                    
+                    self.audioManager.player.currentPlaybackTime = self.musicStartTime
+                    self.audioManager.player.play()
+                    
+                    self.musicEndCheck_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.musicEndPointCheck), userInfo: nil, repeats: true)
+                    
+                    self.onceMusic = true
+                }
             }
             if (self.isDown)
             {
-                print("down music setting")
-                
-                self.audioManager.player.setQueue(with: self.audioManager.downMusicInfo()!)
-                
-                self.musicStartTime = self.audioManager.UD.object(forKey: self.audioManager.downStartTimeKey) as! TimeInterval
-                self.musicEndTime = self.audioManager.UD.object(forKey: self.audioManager.downEndTimeKey) as! TimeInterval
+                if (!self.onceMusic)
+                {
+                    print("down music setting")
+                    
+                    self.audioManager.player.setQueue(with: self.audioManager.downMusicInfo()!)
+                    
+                    self.musicStartTime = self.audioManager.UD.object(forKey: self.audioManager.downStartTimeKey) as! TimeInterval
+                    self.musicEndTime = self.audioManager.UD.object(forKey: self.audioManager.downEndTimeKey) as! TimeInterval
+                    
+                    self.audioManager.player.currentPlaybackTime = self.musicStartTime
+                    self.audioManager.player.play()
+                    
+                    self.musicEndCheck_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.musicEndPointCheck), userInfo: nil, repeats: true)
+                    
+                    self.onceMusic = true
+                }
             }
-            self.audioManager.player.currentPlaybackTime = self.musicStartTime
-            self.audioManager.player.play()
-            
-            self.musicEndCheck_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.musicEndPointCheck), userInfo: nil, repeats: true)
         }
     }
     
@@ -282,15 +308,13 @@ class MainViewController: UIViewController
     {
         self.isUp = false
         self.isDown = false
+        self.iskeisoku = false
         self.btnUP.isEnabled = true
         self.btnDOWN.isEnabled = true
         self.lblMessage.isHidden = true
         self.before_altitude = 0
         self.now_altitude = 0
         self.wait_count = 0
-        self.altimeter.stopRelativeAltitudeUpdates()
-        self.measure_timer?.invalidate()
-        self.musicEndCheck_timer?.invalidate()
     }
     
     /*

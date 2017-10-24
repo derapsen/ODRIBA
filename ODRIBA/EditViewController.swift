@@ -160,6 +160,7 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         {
             return
         }
+        
         self.timerPosition = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.changePosition), userInfo: nil, repeats: true)
     }
     
@@ -184,6 +185,7 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     @objc func changePosition()
     {
         self.sliderPosition.value = Float(self.audioManager.player.currentPlaybackTime)
+        
         if (self.sliderPosition.value >= Float(self.sliderRange.upperValue))
         {
             self.audioManager.player.pause()
@@ -245,6 +247,7 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         if let mediaItemFirst = mediaItemCollection.items.first
         {
             updateSongInformationUI(mediaItem: mediaItemFirst)
+            
             // 再生範囲スライダーの最小値・最大値
             self.sliderRange.minimumValue = 0
             self.sliderRange.maximumValue = mediaItemFirst.playbackDuration
@@ -259,7 +262,6 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
             self.sliderPosition.value = 0
 
             // 音楽の再生位置を再生範囲スライダーの下限値にする
-            //self.player.currentPlaybackTime = self.sliderRange.lowerValue
             self.audioManager.player.currentPlaybackTime = self.sliderRange.lowerValue
         }
         // ピッカーを閉じ、破棄する
