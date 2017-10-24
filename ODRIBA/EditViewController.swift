@@ -33,7 +33,7 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     var mediaEndTime: Double?
     
     // 保存ボタン設定
-    let btnSave = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(EditViewController.saveTapAction(sender:)))
+    @IBOutlet weak var btnSave: UIBarButtonItem!
     
     // 楽曲情報イメージ・ラベル
     @IBOutlet weak var imgArtwork: UIImageView!
@@ -65,7 +65,6 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
         
         // NavigationBarのタイトル、保存ボタンの追加
         self.navigationItem.title = self.navTitle
-        self.navigationItem.setRightBarButton(self.btnSave, animated: true)
         
         // 画面背景の設定
         self.viewEdit.backgroundColor = self.colorBackground
@@ -95,6 +94,9 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        
+        // NavigationBar表示
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         // 過去の楽曲情報があるなら
         if (self.audioManager.isUpColle())
@@ -230,6 +232,9 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
     {
         self.isColle = true
         self.btnSave.isEnabled = true
+        
+        self.sliderRange.isHidden = false
+        self.sliderPosition.isHidden = false
         
         // 選択した曲情報がmediaItemCollectionに入っているので、これをplayerにセット。
         self.audioManager.player.setQueue(with: mediaItemCollection)
@@ -367,7 +372,7 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
      *  音楽設定保存ボタン処理
      *
      */
-    @objc func saveTapAction(sender: UIBarButtonItem)
+    @IBAction func saveTapAction(sender: UIBarButtonItem)
     {
         self.barStatusPause()
         

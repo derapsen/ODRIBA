@@ -68,14 +68,14 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="楽曲情報がありません" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvu-Tb-fu1">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="楽曲情報がありません" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvu-Tb-fu1">
                                                 <rect key="frame" x="19" y="306" width="320" height="22"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="楽曲情報がありません" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLK-dK-uxV">
-                                                <rect key="frame" x="19" y="348" width="320" height="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="楽曲情報がありません" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLK-dK-uxV">
+                                                <rect key="frame" x="87.5" y="348" width="183.5" height="22"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -116,10 +116,10 @@
                                             <constraint firstItem="tLr-A8-NOA" firstAttribute="top" secondItem="Uti-ob-K37" secondAttribute="top" constant="28" id="1Yt-Kc-BBY"/>
                                             <constraint firstItem="Vs3-dJ-rPm" firstAttribute="top" secondItem="96M-9O-VqV" secondAttribute="bottom" constant="8" symbolic="YES" id="2Uh-ry-Ocy"/>
                                             <constraint firstItem="96M-9O-VqV" firstAttribute="trailing" secondItem="Vs3-dJ-rPm" secondAttribute="trailing" id="6Do-Ym-nyi"/>
-                                            <constraint firstItem="96M-9O-VqV" firstAttribute="trailing" secondItem="8ag-Ds-VrV" secondAttribute="trailing" id="9T3-KH-5Zj"/>
+                                            <constraint firstItem="96M-9O-VqV" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8ag-Ds-VrV" secondAttribute="trailing" id="9T3-KH-5Zj"/>
                                             <constraint firstItem="aLK-dK-uxV" firstAttribute="centerX" secondItem="Uti-ob-K37" secondAttribute="centerX" id="9xX-Bm-QtT"/>
                                             <constraint firstItem="8ag-Ds-VrV" firstAttribute="top" secondItem="tLr-A8-NOA" secondAttribute="bottom" constant="8" symbolic="YES" id="Afk-Yd-s3G"/>
-                                            <constraint firstItem="96M-9O-VqV" firstAttribute="leading" secondItem="8ag-Ds-VrV" secondAttribute="leading" id="Ai6-Mt-Vkx"/>
+                                            <constraint firstItem="96M-9O-VqV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8ag-Ds-VrV" secondAttribute="leading" id="Ai6-Mt-Vkx"/>
                                             <constraint firstItem="96M-9O-VqV" firstAttribute="leading" secondItem="Vs3-dJ-rPm" secondAttribute="leading" id="DXL-jT-ROQ"/>
                                             <constraint firstItem="96M-9O-VqV" firstAttribute="centerX" secondItem="tLr-A8-NOA" secondAttribute="centerX" id="Fdd-jf-GT4"/>
                                             <constraint firstItem="96M-9O-VqV" firstAttribute="top" secondItem="aLK-dK-uxV" secondAttribute="bottom" constant="57" id="Ikc-jf-KJE"/>
@@ -127,7 +127,7 @@
                                             <constraint firstItem="96M-9O-VqV" firstAttribute="centerX" secondItem="Uti-ob-K37" secondAttribute="centerX" id="Rff-ux-FOR"/>
                                             <constraint firstItem="96M-9O-VqV" firstAttribute="top" secondItem="Uti-ob-K37" secondAttribute="top" constant="427" id="anL-6f-wXk"/>
                                             <constraint firstItem="aLK-dK-uxV" firstAttribute="centerX" secondItem="Uti-ob-K37" secondAttribute="centerX" id="cVr-Pz-1Ka"/>
-                                            <constraint firstAttribute="trailing" secondItem="Jvu-Tb-fu1" secondAttribute="trailing" constant="87" id="cel-lV-AlH"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jvu-Tb-fu1" secondAttribute="trailing" constant="20" id="cel-lV-AlH"/>
                                             <constraint firstItem="8ag-Ds-VrV" firstAttribute="centerX" secondItem="Uti-ob-K37" secondAttribute="centerX" id="dTd-0X-3fW"/>
                                             <constraint firstItem="aLK-dK-uxV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jvu-Tb-fu1" secondAttribute="leading" id="eZA-Hd-nXh"/>
                                             <constraint firstItem="96M-9O-VqV" firstAttribute="leading" secondItem="Uti-ob-K37" secondAttribute="leading" constant="19" id="gU0-zS-MsK"/>
@@ -163,7 +163,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9BR-de-l3q"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wxt-my-6WT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vOo-Cv-Oub">
+                            <connections>
+                                <action selector="saveTapActionWithSender:" destination="ob2-iI-b0p" id="5B8-JW-zZG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="btnSave" destination="vOo-Cv-Oub" id="f36-B6-cnS"/>
                         <outlet property="imgArtwork" destination="tLr-A8-NOA" id="OvH-Pa-PAb"/>
                         <outlet property="lblAlbum" destination="Jvu-Tb-fu1" id="8dm-UR-uan"/>
                         <outlet property="lblArtist" destination="aLK-dK-uxV" id="zug-bM-V1y"/>
@@ -284,8 +292,8 @@
                         <outlet property="lblDOWNMessage" destination="95d-kK-QVr" id="0BV-H4-XEm"/>
                         <outlet property="lblMessage" destination="Odb-ah-Fru" id="WFi-Be-r07"/>
                         <outlet property="lblUPMessage" destination="iSd-LY-U1D" id="qZM-pI-QY5"/>
-                        <segue destination="ob2-iI-b0p" kind="show" identifier="goEdit" id="Xdh-fi-fmg"/>
-                        <segue destination="KPq-Lk-GLz" kind="show" identifier="goCredit" id="BTd-dC-a12"/>
+                        <segue destination="ob2-iI-b0p" kind="push" identifier="goEdit" id="Xdh-fi-fmg"/>
+                        <segue destination="KPq-Lk-GLz" kind="push" identifier="goCredit" id="BTd-dC-a12"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gC9-Vr-aw3" sceneMemberID="firstResponder"/>
@@ -301,7 +309,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNN-4r-lcW">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diz-MB-3Vd">
                                         <rect key="frame" x="136" y="295" width="104" height="24"/>
@@ -355,16 +363,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iNN-4r-lcW" firstAttribute="leading" secondItem="EEH-TO-h8p" secondAttribute="leading" id="5Pm-JC-OtJ"/>
-                            <constraint firstItem="iNN-4r-lcW" firstAttribute="top" secondItem="WaI-Ll-h0E" secondAttribute="top" id="68Z-IW-H1n"/>
+                            <constraint firstItem="iNN-4r-lcW" firstAttribute="top" secondItem="WaI-Ll-h0E" secondAttribute="top" constant="-20" id="68Z-IW-H1n"/>
                             <constraint firstItem="iNN-4r-lcW" firstAttribute="bottom" secondItem="WaI-Ll-h0E" secondAttribute="bottom" id="6Zs-HZ-upm"/>
                             <constraint firstAttribute="trailing" secondItem="iNN-4r-lcW" secondAttribute="trailing" id="xWc-NI-MHY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WaI-Ll-h0E"/>
                     </view>
+                    <navigationItem key="navigationItem" id="DQ6-z8-fwi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fuT-rq-TfH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="817" y="1601"/>
+            <point key="canvasLocation" x="816.79999999999995" y="1600.7496251874063"/>
         </scene>
     </scenes>
     <resources>

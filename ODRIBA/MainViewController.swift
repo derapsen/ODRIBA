@@ -7,12 +7,33 @@
 //
 
 import UIKit
-
+import CoreMotion
 
 class MainViewController: UIViewController
 {
     // 楽曲管理シングルトン
     var audioManager = AudioManager.sharedManager
+    
+    var before_altitude: Double = 0
+    var now_altitude: Double = 0
+    var isUp: Bool = false
+    var isDown: Bool = false
+    
+    // 昇降計測用タイマー
+    var measure_timer: Timer?
+    
+    // 待機時間カウント用変数
+    var wait_count: Int = 0
+    var isWait: Bool = true
+    
+    let altimeter = CMAltimeter()
+    
+    // 再生状況判断用タイマー
+    var musicEndCheck_timer: Timer?
+    
+    // 再生範囲用変数
+    var musicStartTime: TimeInterval = 0
+    var musicEndTime: TimeInterval = 0
     
     // 中央のメッセージラベル
     @IBOutlet weak var lblMessage: UILabel!
@@ -27,14 +48,22 @@ class MainViewController: UIViewController
     {
         super.viewDidLoad()
         
+        self.Setting()
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        
         // NavigationBar非表示
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
+        if (self.measure_timer != nil)
+        {
+            self.measure_timer?.invalidate()
+            self.musicEndCheck_timer?.invalidate()
+            self.Setting()
+        }
         
         if (self.audioManager.isUpColle())
         {
@@ -66,11 +95,184 @@ class MainViewController: UIViewController
         super.viewWillDisappear(animated)
         // NavigationBar表示
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        if (self.measure_timer != nil)
+        {
+            self.measure_timer?.invalidate()
+            self.musicEndCheck_timer?.invalidate()
+            self.Setting()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        // 上り下りの両方あれば計測開始
+        if (self.audioManager.isUpColle() && self.audioManager.isDownColle())
+        {
+            self.btnUP.isEnabled = false
+            self.btnDOWN.isEnabled = false
+            self.lblMessage.isHidden = false
+            self.startUpdate()
+        }
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    /*
+     *
+     *  計測処理
+     *
+     */
+    func startUpdate()
+    {
+        if (CMAltimeter.isRelativeAltitudeAvailable())
+        {
+            self.altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler:
+                {data, error in
+                    if error == nil
+                    {
+                        self.now_altitude = data?.relativeAltitude as! Double
+                        
+                        if (!(self.measure_timer?.isValid)!)
+                        {
+                            self.before_altitude = self.now_altitude
+                            self.measure_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.UpDownCheck), userInfo: nil, repeats: true)
+                        }
+                    }
+            })
+        }
+        else
+        {
+            print("not use altimeter")
+        }
+    }
+    
+    /*
+     *
+     *  上りか下りかの検出
+     *
+     */
+    @objc func UpDownCheck()
+    {
+        if (self.now_altitude == 0)
+        {
+            self.wait_count = 0
+            self.before_altitude = self.now_altitude
+            return
+        }
+        
+        if (self.now_altitude > self.before_altitude + 0.025)
+        {
+            self.wait_count = 0
+            self.isUp = true
+            self.isDown = false
+            
+            // 追加分
+            self.musicSettingChange()
+
+            self.before_altitude = self.now_altitude
+        }
+        else if (self.now_altitude < self.before_altitude - 0.025)
+        {
+            self.wait_count = 0
+            self.isUp = false
+            self.isDown = true
+            
+            // 追加分
+            self.musicSettingChange()
+            
+            self.before_altitude = self.now_altitude
+        }
+        else
+        {
+            self.wait_count += 1
+            self.isUp = false
+            self.isDown = false
+            
+            if (wait_count >= 5)
+            {
+                // 曲を止める
+                self.audioManager.player.pause()
+                self.audioManager.player.currentPlaybackTime = 0
+                
+                self.measure_timer?.invalidate()
+                self.musicEndCheck_timer?.invalidate()
+                self.Setting()
+            }
+        }
+    }
+    
+    /*
+     *
+     *  流す曲選択処理
+     *
+     */
+    func musicSettingChange()
+    {
+        if (!(measure_timer?.isValid)!)
+        {
+            if (self.isUp)
+            {
+                print("up music setting")
+                
+                self.audioManager.player.setQueue(with: self.audioManager.upMusicInfo())
+                
+                self.musicStartTime = self.audioManager.UD.object(forKey: self.audioManager.upStartTimeKey) as! TimeInterval
+                self.musicEndTime = self.audioManager.UD.object(forKey: self.audioManager.upEndTimeKey) as! TimeInterval
+            }
+            if (self.isDown)
+            {
+                print("down music setting")
+                
+                self.audioManager.player.setQueue(with: self.audioManager.downMusicInfo())
+                
+                self.musicStartTime = self.audioManager.UD.object(forKey: self.audioManager.downStartTimeKey) as! TimeInterval
+                self.musicEndTime = self.audioManager.UD.object(forKey: self.audioManager.downEndTimeKey) as! TimeInterval
+            }
+            self.audioManager.player.currentPlaybackTime = self.musicStartTime
+            self.audioManager.player.play()
+            
+            self.musicEndCheck_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.musicEndPointCheck), userInfo: nil, repeats: true)
+        }
+    }
+    
+    /*
+     *
+     *  再生状況判断処理
+     *
+     */
+    @objc func musicEndPointCheck()
+    {
+        // 再生範囲上限値まで流れたら再生位置を再生範囲下限値に
+        if (self.audioManager.player.currentPlaybackTime >= self.musicEndTime)
+        {
+            self.audioManager.player.currentPlaybackTime = self.musicStartTime
+        }
+    }
+    
+    /*
+     *
+     *  初期化処理
+     *
+     */
+    func Setting()
+    {
+        self.isUp = false
+        self.isDown = false
+        self.btnUP.isEnabled = true
+        self.btnDOWN.isEnabled = true
+        self.lblMessage.isHidden = true
+        self.before_altitude = 0
+        self.now_altitude = 0
+        self.wait_count = 0
+        self.altimeter.stopRelativeAltitudeUpdates()
+        self.measure_timer?.invalidate()
+        self.musicEndCheck_timer?.invalidate()
     }
     
     /*
@@ -144,122 +346,12 @@ class MainViewController: UIViewController
     
     /*
      *
-     *  昇降ボタン処理
-     *
-     */
-    @IBAction func btnUPDOWNTapAction(_ sender: UIBarButtonItem)
-    {
-        var title: String = ""
-        var msg: String = ""
-        
-        // 閉じるボタンを作成する
-        let cancelAction = UIAlertAction(title: "閉じる",
-                                         style: UIAlertActionStyle.cancel,
-                                         handler: nil)
-        
-        if (audioManager.isUpColle() && !audioManager.isDownColle())
-        {
-            // 上りだけ設定済み
-            
-            title = "上りの曲のみ設定しています"
-            msg = "下りの曲は再生しません。"
-            
-            // アラートを作成する
-            let alert = UIAlertController(title: title,
-                                          message: msg,
-                                          preferredStyle: UIAlertControllerStyle.alert)
-            
-            // アラートに閉じるボタンを追加する
-            alert.addAction(cancelAction)
-            
-            // アラートを表示する
-            self.present(alert,
-                         animated: true,
-                         completion: nil)
-            
-        }
-        else if (!audioManager.isUpColle() && audioManager.isDownColle())
-        {
-            // 下りだけ設定済み
-            
-            title = "下りの曲のみ設定しています"
-            msg = "上りの曲は再生しません。"
-            
-            // アラートを作成する
-            let alert = UIAlertController(title: title,
-                                          message: msg,
-                                          preferredStyle: UIAlertControllerStyle.alert)
-            
-            // アラートに閉じるボタンを追加する
-            alert.addAction(cancelAction)
-            
-            // アラートを表示する
-            self.present(alert,
-                         animated: true,
-                         completion: nil)
-        }
-        else if (!audioManager.isUpColle() && !audioManager.isDownColle())
-        {
-            // 上り下り設定していない
-            
-            title = "楽曲を設定していません"
-            msg = "楽曲設定ボタンをタップし設定を行ってください。"
-            
-            // アラートを作成する
-            let alert = UIAlertController(title: title,
-                                          message: msg,
-                                          preferredStyle: UIAlertControllerStyle.alert)
-            
-            // 戻るボタンを作成する
-            let backAction = UIAlertAction(title: "戻る",
-                                             style: UIAlertActionStyle.cancel,
-                                             handler: nil)
-            
-            // アラートに閉じるボタンを追加する
-            alert.addAction(backAction)
-            
-            // アラートを表示する
-            self.present(alert,
-                         animated: true,
-                         completion: nil)
-            
-            return
-        }
-        else
-        {
-            print("all setting")
-            
-            title = "上りと下りの曲設定済み"
-            msg = "上りと下り曲どちらでも再生できます"
-            
-            // アラートを作成する
-            let alert = UIAlertController(title: title,
-                                          message: msg,
-                                          preferredStyle: UIAlertControllerStyle.alert)
-            
-            // アラートに閉じるボタンを追加する
-            alert.addAction(cancelAction)
-            
-            // アラートを表示する
-            self.present(alert,
-                         animated: true,
-                         completion: nil)
-        }
-        
-        
-        
-        self.lblMessage.isHidden = false
-    }
-    
-    /*
-     *
      *  インフォボタン処理
      *
      */
     @IBAction func btnInfoTapAction(_ sender: Any)
     {
-        performSegue(withIdentifier: "goCredit", sender: nil)
+        self.performSegue(withIdentifier: "goCredit", sender: nil)
     }
-    
 }
 
