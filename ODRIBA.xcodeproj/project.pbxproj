@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		13210CD11E359C8502F683E5 /* Pods_ODRIBAUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4B43D6FF262636AAA5EFE2 /* Pods_ODRIBAUITests.framework */; };
 		1FB543E1B158BBF011051A49 /* Pods_ODRIBATests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA127C6F2613362EA1B5F5E6 /* Pods_ODRIBATests.framework */; };
+		A2518D521F9F3DA500BD9209 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2518D511F9F3DA500BD9209 /* AudioToolbox.framework */; };
 		A27990DF1F9AE41500A60788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990DE1F9AE41500A60788 /* AppDelegate.swift */; };
 		A27990E11F9AE41500A60788 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990E01F9AE41500A60788 /* MainViewController.swift */; };
 		A27990E41F9AE41500A60788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A27990E21F9AE41500A60788 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		335C27C22A8D20900FFC3C92 /* Pods-ODRIBAUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBAUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBAUITests/Pods-ODRIBAUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CFAA26B44D5E9A83DCA1D79 /* Pods-ODRIBATests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBATests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBATests/Pods-ODRIBATests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A4BBE1510B4CA5B2026D208 /* Pods-ODRIBA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBA.release.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBA/Pods-ODRIBA.release.xcconfig"; sourceTree = "<group>"; };
+		A2518D511F9F3DA500BD9209 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A27990DB1F9AE41500A60788 /* ODRIBA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ODRIBA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27990DE1F9AE41500A60788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A27990E01F9AE41500A60788 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2518D521F9F3DA500BD9209 /* AudioToolbox.framework in Frameworks */,
 				A2AF7DEC1F9F0B9900117D44 /* CoreMotion.framework in Frameworks */,
 				A28736301F9C39B600E1764A /* MediaPlayer.framework in Frameworks */,
 				A6789C17F5D773087AB326E8 /* Pods_ODRIBA.framework in Frameworks */,
@@ -182,6 +185,7 @@
 		B25B2E15CF1815EFD9756981 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A2518D511F9F3DA500BD9209 /* AudioToolbox.framework */,
 				A2AF7DEB1F9F0B9900117D44 /* CoreMotion.framework */,
 				A287362F1F9C39B600E1764A /* MediaPlayer.framework */,
 				2D52F1B8D54CABD317901D35 /* Pods_ODRIBA.framework */,

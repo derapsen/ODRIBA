@@ -108,7 +108,7 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
                 
                 let mediaColleUp = audioManager.upMusicInfo()
                 self.mediaColle = mediaColleUp
-                let mediaItemUp = mediaColleUp.items.first
+                let mediaItemUp = mediaColleUp?.items.first
                 self.Setting(mediaItem: mediaItemUp!)
             }
         }
@@ -134,7 +134,7 @@ class EditViewController: UIViewController, MPMediaPickerControllerDelegate
                 
                 let mediaColleDown = audioManager.downMusicInfo()
                 self.mediaColle = mediaColleDown
-                let mediaItemDown = mediaColleDown.items.first
+                let mediaItemDown = mediaColleDown?.items.first
                 self.Setting(mediaItem: mediaItemDown!)
             }
         }

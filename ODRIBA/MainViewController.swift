@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import AudioToolbox
 
 class MainViewController: UIViewController
 {
@@ -18,6 +19,7 @@ class MainViewController: UIViewController
     var now_altitude: Double = 0
     var isUp: Bool = false
     var isDown: Bool = false
+    var iskeisoku: Bool = false
     
     // 昇降計測用タイマー
     var measure_timer: Timer?
@@ -49,6 +51,7 @@ class MainViewController: UIViewController
         super.viewDidLoad()
         
         self.Setting()
+        
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -69,7 +72,7 @@ class MainViewController: UIViewController
         {
             self.btnUP.backgroundColor = self.UIColorFromRGB(rgbValue: 0xFFA000)
             let upMusicColle = audioManager.upMusicInfo()
-            self.lblUPMessage.text = upMusicColle.items.first?.title
+            self.lblUPMessage.text = upMusicColle?.items.first?.title
         }
         else
         {
@@ -81,7 +84,7 @@ class MainViewController: UIViewController
         {
             self.btnDOWN.backgroundColor = self.UIColorFromRGB(rgbValue: 0x00B8FA)
             let downMusicColle = audioManager.downMusicInfo()
-            self.lblDOWNMessage.text = downMusicColle.items.first?.title
+            self.lblDOWNMessage.text = downMusicColle?.items.first?.title
         }
         else
         {
@@ -111,9 +114,7 @@ class MainViewController: UIViewController
         // 上り下りの両方あれば計測開始
         if (self.audioManager.isUpColle() && self.audioManager.isDownColle())
         {
-            self.btnUP.isEnabled = false
-            self.btnDOWN.isEnabled = false
-            self.lblMessage.isHidden = false
+            
             self.startUpdate()
         }
     }
@@ -138,11 +139,15 @@ class MainViewController: UIViewController
                     {
                         self.now_altitude = data?.relativeAltitude as! Double
                         
-                        if (!(self.measure_timer?.isValid)!)
-                        {
-                            self.before_altitude = self.now_altitude
-                            self.measure_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.UpDownCheck), userInfo: nil, repeats: true)
-                        }
+                        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                        
+//                        if (self.measure_timer == nil)
+//                        {
+////                            self.iskeisoku = true
+//
+//                            self.before_altitude = self.now_altitude
+//                            self.measure_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.UpDownCheck), userInfo: nil, repeats: true)
+//                        }
                     }
             })
         }
@@ -166,7 +171,16 @@ class MainViewController: UIViewController
             return
         }
         
-        if (self.now_altitude > self.before_altitude + 0.025)
+//        if (self.iskeisoku)
+//        {
+//            self.lblMessage.isHidden = false
+//        }
+//        else
+//        {
+//            self.lblMessage.isHidden = true
+//        }
+        
+        if (self.now_altitude > self.before_altitude + 0.05)
         {
             self.wait_count = 0
             self.isUp = true
@@ -177,7 +191,7 @@ class MainViewController: UIViewController
 
             self.before_altitude = self.now_altitude
         }
-        else if (self.now_altitude < self.before_altitude - 0.025)
+        else if (self.now_altitude < self.before_altitude - 0.05)
         {
             self.wait_count = 0
             self.isUp = false
@@ -194,11 +208,13 @@ class MainViewController: UIViewController
             self.isUp = false
             self.isDown = false
             
+            
+            
             if (wait_count >= 5)
             {
                 // 曲を止める
                 self.audioManager.player.pause()
-                self.audioManager.player.currentPlaybackTime = 0
+                self.audioManager.player.currentPlaybackTime = self.musicStartTime
                 
                 self.measure_timer?.invalidate()
                 self.musicEndCheck_timer?.invalidate()
@@ -214,13 +230,15 @@ class MainViewController: UIViewController
      */
     func musicSettingChange()
     {
-        if (!(measure_timer?.isValid)!)
+        if (measure_timer == nil)
         {
             if (self.isUp)
             {
+                
+                
                 print("up music setting")
                 
-                self.audioManager.player.setQueue(with: self.audioManager.upMusicInfo())
+                self.audioManager.player.setQueue(with: self.audioManager.upMusicInfo()!)
                 
                 self.musicStartTime = self.audioManager.UD.object(forKey: self.audioManager.upStartTimeKey) as! TimeInterval
                 self.musicEndTime = self.audioManager.UD.object(forKey: self.audioManager.upEndTimeKey) as! TimeInterval
@@ -229,7 +247,7 @@ class MainViewController: UIViewController
             {
                 print("down music setting")
                 
-                self.audioManager.player.setQueue(with: self.audioManager.downMusicInfo())
+                self.audioManager.player.setQueue(with: self.audioManager.downMusicInfo()!)
                 
                 self.musicStartTime = self.audioManager.UD.object(forKey: self.audioManager.downStartTimeKey) as! TimeInterval
                 self.musicEndTime = self.audioManager.UD.object(forKey: self.audioManager.downEndTimeKey) as! TimeInterval
