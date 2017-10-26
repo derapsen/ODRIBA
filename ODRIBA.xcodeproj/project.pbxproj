@@ -19,12 +19,12 @@
 		A27990FF1F9AE41600A60788 /* ODRIBAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27990FE1F9AE41600A60788 /* ODRIBAUITests.swift */; };
 		A28736301F9C39B600E1764A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A287362F1F9C39B600E1764A /* MediaPlayer.framework */; };
 		A295258C1F9AF114007BCE3C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A295258B1F9AF114007BCE3C /* EditViewController.swift */; };
-		A2A0EE1D1F9AEC900022FD36 /* TriangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0EE1B1F9AEC900022FD36 /* TriangleButton.swift */; };
-		A2A0EE1E1F9AEC900022FD36 /* InvertedTriangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A0EE1C1F9AEC900022FD36 /* InvertedTriangleButton.swift */; };
-		A2AF7DE21F9CC5D500117D44 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AF7DE11F9CC5D500117D44 /* AudioManager.swift */; };
 		A2AF7DE41F9CD26C00117D44 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AF7DE31F9CD26C00117D44 /* CreditViewController.swift */; };
-		A2AF7DE81F9ECF7C00117D44 /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AF7DE51F9ECF7A00117D44 /* information.png */; };
 		A2AF7DEC1F9F0B9900117D44 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2AF7DEB1F9F0B9900117D44 /* CoreMotion.framework */; };
+		A2E835381FA03ECD00690338 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E835371FA03ECD00690338 /* AudioManager.swift */; };
+		A2E8353A1FA03EFD00690338 /* InvertedTriangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E835391FA03EFD00690338 /* InvertedTriangleButton.swift */; };
+		A2E8353C1FA03F2000690338 /* TriangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E8353B1FA03F2000690338 /* TriangleButton.swift */; };
+		A2E8353E1FA03F6600690338 /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = A2E8353D1FA03F6500690338 /* information.png */; };
 		A6789C17F5D773087AB326E8 /* Pods_ODRIBA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D52F1B8D54CABD317901D35 /* Pods_ODRIBA.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,12 +67,12 @@
 		A27991001F9AE41600A60788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A287362F1F9C39B600E1764A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		A295258B1F9AF114007BCE3C /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
-		A2A0EE1B1F9AEC900022FD36 /* TriangleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriangleButton.swift; path = "../../三角形ボタンサンプル/TriangleButton.swift"; sourceTree = "<group>"; };
-		A2A0EE1C1F9AEC900022FD36 /* InvertedTriangleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvertedTriangleButton.swift; path = "../../三角形ボタンサンプル/InvertedTriangleButton.swift"; sourceTree = "<group>"; };
-		A2AF7DE11F9CC5D500117D44 /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioManager.swift; path = ../../WalkMan/WalkMan/AudioManager.swift; sourceTree = "<group>"; };
 		A2AF7DE31F9CD26C00117D44 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
-		A2AF7DE51F9ECF7A00117D44 /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = information.png; path = ../../ODRIBA_media/resize_image/information.png; sourceTree = "<group>"; };
 		A2AF7DEB1F9F0B9900117D44 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		A2E835371FA03ECD00690338 /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		A2E835391FA03EFD00690338 /* InvertedTriangleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvertedTriangleButton.swift; sourceTree = "<group>"; };
+		A2E8353B1FA03F2000690338 /* TriangleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleButton.swift; sourceTree = "<group>"; };
+		A2E8353D1FA03F6500690338 /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
 		AA127C6F2613362EA1B5F5E6 /* Pods_ODRIBATests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODRIBATests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6C837B16E458B602C78F98 /* Pods-ODRIBATests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBATests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBATests/Pods-ODRIBATests.release.xcconfig"; sourceTree = "<group>"; };
 		E394F753D993EF09BD51FC5D /* Pods-ODRIBA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ODRIBA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ODRIBA/Pods-ODRIBA.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		A27990DD1F9AE41500A60788 /* ODRIBA */ = {
 			isa = PBXGroup;
 			children = (
-				A2AF7DE51F9ECF7A00117D44 /* information.png */,
+				A2E8353D1FA03F6500690338 /* information.png */,
 				A27990DE1F9AE41500A60788 /* AppDelegate.swift */,
 				A2AF7DE31F9CD26C00117D44 /* CreditViewController.swift */,
 				A27990E01F9AE41500A60788 /* MainViewController.swift */,
@@ -156,10 +156,10 @@
 				A27990E51F9AE41500A60788 /* Assets.xcassets */,
 				A27990E71F9AE41500A60788 /* LaunchScreen.storyboard */,
 				A27990EA1F9AE41500A60788 /* Info.plist */,
-				A2AF7DE11F9CC5D500117D44 /* AudioManager.swift */,
-				A2A0EE1C1F9AEC900022FD36 /* InvertedTriangleButton.swift */,
+				A2E835371FA03ECD00690338 /* AudioManager.swift */,
+				A2E835391FA03EFD00690338 /* InvertedTriangleButton.swift */,
 				A295258B1F9AF114007BCE3C /* EditViewController.swift */,
-				A2A0EE1B1F9AEC900022FD36 /* TriangleButton.swift */,
+				A2E8353B1FA03F2000690338 /* TriangleButton.swift */,
 			);
 			path = ODRIBA;
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2AF7DE81F9ECF7C00117D44 /* information.png in Resources */,
+				A2E8353E1FA03F6600690338 /* information.png in Resources */,
 				A27990E91F9AE41500A60788 /* LaunchScreen.storyboard in Resources */,
 				A27990E61F9AE41500A60788 /* Assets.xcassets in Resources */,
 				A27990E41F9AE41500A60788 /* Main.storyboard in Resources */,
@@ -478,12 +478,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2AF7DE41F9CD26C00117D44 /* CreditViewController.swift in Sources */,
-				A2AF7DE21F9CC5D500117D44 /* AudioManager.swift in Sources */,
+				A2E8353C1FA03F2000690338 /* TriangleButton.swift in Sources */,
+				A2E835381FA03ECD00690338 /* AudioManager.swift in Sources */,
+				A2E8353A1FA03EFD00690338 /* InvertedTriangleButton.swift in Sources */,
 				A295258C1F9AF114007BCE3C /* EditViewController.swift in Sources */,
 				A27990E11F9AE41500A60788 /* MainViewController.swift in Sources */,
 				A27990DF1F9AE41500A60788 /* AppDelegate.swift in Sources */,
-				A2A0EE1E1F9AEC900022FD36 /* InvertedTriangleButton.swift in Sources */,
-				A2A0EE1D1F9AEC900022FD36 /* TriangleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

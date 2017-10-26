@@ -197,7 +197,7 @@ class MainViewController: UIViewController
             {
                 self.wait_count = 0
                 
-                self.wait_timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.waitCount), userInfo: nil, repeats: true)
+                self.wait_timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.waitCount(sender:)), userInfo: nil, repeats: true)
             }
             self.isUp = false
             self.isDown = false
@@ -228,7 +228,7 @@ class MainViewController: UIViewController
      *  待機カウント処理
      *
      */
-    @objc func waitCount()
+    @objc func waitCount(sender: Timer)
     {
         self.wait_count += 1
         
@@ -258,7 +258,7 @@ class MainViewController: UIViewController
                     self.audioManager.player.currentPlaybackTime = self.musicStartTime
                     self.audioManager.player.play()
                     
-                    self.musicEndCheck_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.musicEndPointCheck), userInfo: nil, repeats: true)
+                    self.musicEndCheck_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.musicEndPointCheck(sender:)), userInfo: nil, repeats: true)
                     
                     self.onceMusic = true
                 }
@@ -277,7 +277,7 @@ class MainViewController: UIViewController
                     self.audioManager.player.currentPlaybackTime = self.musicStartTime
                     self.audioManager.player.play()
                     
-                    self.musicEndCheck_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.musicEndPointCheck), userInfo: nil, repeats: true)
+                    self.musicEndCheck_timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.musicEndPointCheck(sender:)), userInfo: nil, repeats: true)
                     
                     self.onceMusic = true
                 }
@@ -290,7 +290,7 @@ class MainViewController: UIViewController
      *  再生状況判断処理
      *
      */
-    @objc func musicEndPointCheck()
+    @objc func musicEndPointCheck(sender: Timer)
     {
         // 再生範囲上限値まで流れたら再生位置を再生範囲下限値に
         if (self.audioManager.player.currentPlaybackTime >= self.musicEndTime)
